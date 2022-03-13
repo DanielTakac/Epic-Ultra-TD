@@ -20,7 +20,9 @@ public class WaveManager : MonoBehaviour{
 
         var json = Resources.Load<TextAsset>("WaveInfo");
 
-        var waveInfo = JsonConvert.DeserializeObject<WaveInfo2[]>(json.text);
+        var levels = JsonConvert.DeserializeObject<List<WaveInfo[]>>(json.text);
+
+        WaveInfo[] waves = levels[0];
 
     }
 

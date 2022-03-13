@@ -1,0 +1,12 @@
+[
+    [
+        {
+            "SpawnAmount": 2,
+            "SpawnDelay": 1
+        },
+        {
+            "SpawnAmount": 6,
+            "SpawnDelay": 4
+        }
+    ]
+]

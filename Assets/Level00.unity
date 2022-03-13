@@ -808,7 +808,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1309486516299566, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
   newWaveMessagePrefab: {fileID: 3546849912995689898, guid: 0eba8061b0ca4d24eb0f596047df2a9e, type: 3}
   newWaveMessageParent: {fileID: 653909478}
-  levelIndexText: {fileID: 0}
+  levelIndexText: {fileID: 1493832355}
 --- !u!4 &69692033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7144069148631725870, guid: 28140c2371d6ec944bd3b3f863eb4b76, type: 3}
