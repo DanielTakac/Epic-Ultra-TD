@@ -1,0 +1,75 @@
+{
+    "name": "INPUT",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "1f34cc23-39cd-4e6f-afb8-5a5f23c45d8b",
+            "actions": [
+                {
+                    "name": "ToggleDebug",
+                    "type": "Button",
+                    "id": "022d7246-098a-4590-917e-9bb5731bcb75",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Return",
+                    "type": "Button",
+                    "id": "0d21d3c7-7b19-4c1c-acd4-c9bfeaecbe1a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7d055183-abc0-4477-b113-39400075009c",
+                    "path": "<Keyboard>/backquote",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleDebug",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4e89fb5-50cd-4b2e-b6d5-e1c590fc0fc2",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9eb356f-a682-4980-896c-00e5f6c5a22e",
+                    "path": "<Keyboard>/numpadEnter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "ControlScheme",
+            "bindingGroup": "ControlScheme",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

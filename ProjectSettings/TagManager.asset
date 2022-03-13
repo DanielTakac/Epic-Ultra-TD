@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - GameManager
+  - SunSpawner
+  - TurretShop
+  - CancelBuildingIcon
+  - FinishLine
+  - Tower
+  - Ghoul
+  - Spawners
+  - FPSCounter
+  - Lawnmower
+  - Castle
+  - Tank
+  - Coin
+  - Tile
+  - Line
+  - TileTarget
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ghoul
+  - Water
+  - UI
+  - PostProcessing
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: New Layer
+    uniqueID: 3499530601
+    locked: 0
