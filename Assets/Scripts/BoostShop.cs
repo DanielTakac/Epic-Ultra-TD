@@ -46,7 +46,7 @@ public class BoostShop : MonoBehaviour{
 
     public void ClickBoost(){
 
-        //if(boosts <= 0) { return; }
+        if(boosts <= 0) { return; }
 
         if (boostSelected){
 
