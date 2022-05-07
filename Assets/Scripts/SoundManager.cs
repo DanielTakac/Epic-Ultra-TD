@@ -108,13 +108,13 @@ public class SoundManager : MonoBehaviour{
 
     private void LoadPrefs(){
 
-        if(PlayerPrefs.GetInt("soundEnabled") == 0){
+        if (PlayerPrefs.GetInt("soundEnabled") == 0){
 
             soundEnabled = false;
 
         }
         
-        if(PlayerPrefs.GetInt("soundEnabled") == 1){
+        if (PlayerPrefs.GetInt("soundEnabled") == 1){
 
             soundEnabled = true;
 

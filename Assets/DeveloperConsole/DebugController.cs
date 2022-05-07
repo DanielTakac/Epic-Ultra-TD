@@ -33,6 +33,8 @@ public class DebugController : MonoBehaviour {
     public static DebugCommand GET_BOOST;
     public static DebugCommand LOSE_BOOST;
     public static DebugCommand BOOST;
+    public static DebugCommand RESET_LEVEL_PROGRESS;
+    public static DebugCommand FINISH_ALL_LEVELS;
     public static DebugCommand HELP;
 
     public List<object> commandList;
@@ -65,16 +67,6 @@ public class DebugController : MonoBehaviour {
     }
 
     private void Awake() {
-
-        /*Command Format
-        command = new DebugCommand("commandID", "description", "format", () => {
-
-            Debug.Log("command");
-
-            //COMMAND
-
-        });
-        */
 
         KILL_ALL = new DebugCommand("kill all", "Removes all enemies", "kill all", () => {
 
@@ -364,6 +356,22 @@ public class DebugController : MonoBehaviour {
 
         });
 
+        RESET_LEVEL_PROGRESS = new DebugCommand("reset level progress", "Resets all finished levels", "reset level progress", () => {
+
+            Debug.Log("RESET_LEVEL_PROGRESS");
+
+            for (int i = 1; i <= 10; i++) PlayerPrefs.SetInt($"level{i}", 0);
+
+        });
+
+        FINISH_ALL_LEVELS = new DebugCommand("finish all levels", "Finishes all levels", "finish all levels", () => {
+
+            Debug.Log("FINISH_ALL_LEVELS");
+
+            for (int i = 1; i <= 10; i++) PlayerPrefs.SetInt($"level{i}", 1);
+
+        });
+
         HELP = new DebugCommand("help", "Shows a list of commands", "help", () => {
 
             showHelp = true;
@@ -393,6 +401,8 @@ public class DebugController : MonoBehaviour {
             GET_BOOST,
             LOSE_BOOST,
             BOOST,
+            RESET_LEVEL_PROGRESS,
+            FINISH_ALL_LEVELS,
             HELP
 
         };
@@ -403,7 +413,7 @@ public class DebugController : MonoBehaviour {
 
     private void OnGUI(){
 
-        if (!showConsole) { return; }
+        if (!showConsole) return;
 
         float y = 0f;
 
@@ -449,7 +459,7 @@ public class DebugController : MonoBehaviour {
 
             if (input.Contains(commandBase.commandId)){
 
-                if(commandList[i] as DebugCommand != null){
+                if (commandList[i] as DebugCommand != null){
 
                     (commandList[i] as DebugCommand).Invoke();
 
@@ -461,7 +471,7 @@ public class DebugController : MonoBehaviour {
 
         }
 
-        if(commandFound == false){
+        if (commandFound == false){
 
             Debug.Log("Command not found!");
 

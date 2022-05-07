@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour{
 
     }
 
-    public void FinishLevel(){
+    public void FinishLevel(int levelIndex){
 
         if (levelFinished) return;
 
@@ -136,6 +136,8 @@ public class GameManager : MonoBehaviour{
         finishTimer = Time.time + 5;
 
         winScreen.SetActive(true);
+
+        PlayerPrefs.SetInt($"level{levelIndex}", 1);
 
     }
 

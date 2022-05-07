@@ -112,7 +112,7 @@ public class WaveManager : MonoBehaviour {
 
             } else {
 
-                FindObjectOfType<GameManager>().FinishLevel();
+                FindObjectOfType<GameManager>().FinishLevel(levelIndex);
 
             }
 
