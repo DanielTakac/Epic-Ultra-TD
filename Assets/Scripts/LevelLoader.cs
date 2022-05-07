@@ -16,7 +16,9 @@ public class LevelLoader : MonoBehaviour{
 
     public void LoadLevel(int sceneIndex){
 
-        StartCoroutine(LoadAsynchronously(sceneIndex));
+        GameObject.FindObjectOfType<LevelIndexManager>().levelIndex = sceneIndex;
+
+        StartCoroutine(LoadAsynchronously(1));
 
     }
 

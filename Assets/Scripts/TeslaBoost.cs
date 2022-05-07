@@ -86,11 +86,11 @@ public class TeslaBoost : MonoBehaviour{
 
     void Update(){
 
-        if (Input.GetKeyDown("space")){
+        /*if (Input.GetKeyDown("space")){
 
             Activate();
 
-        }
+        }*/
         
     }
 

@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour{
     [Header ("Setup")]
 
     public GameObject deathScreen;
+    public GameObject winScreen;
 
     public Text livesText;
-
     public Text moneyText;
 
     public GameObject mainCamera;
@@ -24,12 +24,14 @@ public class GameManager : MonoBehaviour{
     [Header ("Game Values")]
 
     public static int lives = 100;
-
     public static int money = 0;
 
     public float vfxSpeed = 0.05f;
 
     private bool levelStarting = false;
+    private bool levelFinished = false;
+
+    private float finishTimer = 0f;
 
     void Start(){
 
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour{
         //Set money text
         moneyText.text = money.ToString();
 
-        if(lives <= 0){
+        if (lives <= 0){
 
             GameOver();
 
@@ -74,12 +76,18 @@ public class GameManager : MonoBehaviour{
             }
 
         }
+
+        if (levelFinished && finishTimer < Time.time){
+
+            SceneManager.LoadSceneAsync(0);
+
+        }
         
     }
 
     private void SlowUpdate(){
 
-        if(PlayerPrefs.GetInt("FXAA") == 0){
+        if (PlayerPrefs.GetInt("FXAA") == 0){
 
             mainCamera.GetComponent<PostProcessLayer>().antialiasingMode = PostProcessLayer.Antialiasing.SubpixelMorphologicalAntialiasing;
 
@@ -116,6 +124,18 @@ public class GameManager : MonoBehaviour{
     private void RestartLevel(){
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+    }
+
+    public void FinishLevel(){
+
+        if (levelFinished) return;
+
+        levelFinished = true;
+
+        finishTimer = Time.time + 5;
+
+        winScreen.SetActive(true);
 
     }
 

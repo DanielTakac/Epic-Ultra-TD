@@ -178,11 +178,11 @@ public class VoyagerBoost : MonoBehaviour{
 
     void Update(){
 
-        if (Input.GetKeyDown("space")){
+        /*if (Input.GetKeyDown("space")){
 
             Activate();
 
-        }
+        }*/
 
         /*if (stage1){
 
@@ -206,21 +206,13 @@ public class VoyagerBoost : MonoBehaviour{
 
     private void FixedUpdate(){
 
-        if (stage1){
+        if (stage1 && currentEnemies != null){
 
-            if (currentEnemies != null){
+            for (int i = 0; i < currentEnemies.Length; i++){
 
-                for (int i = 0; i < currentEnemies.Length; i++){
+                if (currentEnemies[i] != null && currentEnemies[i].transform.position.x == transform.position.x){
 
-                    if (currentEnemies[i] != null){
-
-                        if (currentEnemies[i].transform.position.x == transform.position.x){
-
-                            currentEnemies[i].GetComponent<Ghoul>().TakeDamage(damage);
-
-                        }
-
-                    }
+                    currentEnemies[i].GetComponent<Ghoul>().TakeDamage(damage);
 
                 }
 
@@ -238,7 +230,7 @@ public class VoyagerBoost : MonoBehaviour{
 
     public void Activate(){
 
-        if (activated) { return; }
+        if (activated) return;
 
         activated = true;
 
@@ -262,7 +254,7 @@ public class VoyagerBoost : MonoBehaviour{
 
             laser[i].transform.position = transform.position + laserSpawnOffSet + new Vector3(0f, 0f, spawnDistance);
 
-            if(laser[i].transform.position.z > maxDistance){
+            if (laser[i].transform.position.z > maxDistance){
 
                 laserLength--;
 

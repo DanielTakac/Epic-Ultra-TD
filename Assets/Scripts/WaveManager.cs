@@ -6,87 +6,175 @@ using System;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
+[System.Serializable]
 
-public class WaveManager : MonoBehaviour{
+public class Wave{
+
+    public int SpawnAmount { get; set; }
+    public int SpawnDelay { get; set; }
+
+    public Wave(){
+
+        this.SpawnAmount = 0;
+        this.SpawnDelay = 0;
+
+    }
+
+    public Wave(int spawnAmount, int spawnDelay) : this() {
+
+        this.SpawnAmount = spawnAmount;
+        this.SpawnDelay = spawnDelay;
+
+    }
+
+}
+
+public class WaveManager : MonoBehaviour {
 
     public GameObject enemyPrefab;
     public GameObject newWaveMessagePrefab;
     public Transform newWaveMessageParent;
-    public Text levelIndexText;
+    public float waveDelay;
 
-    void Start() {
+    private Wave[] level1 = new Wave[5];
+    private Wave[] level2;
+    private Wave[] level3;
+    private Wave[] level4;
+    private Wave[] level5;
+    private Wave[] level6;
+    private Wave[] level7;
+    private Wave[] level8;
+    private Wave[] level9;
+    private Wave[] level10;
 
-        int levelIndex = Convert.ToInt32(levelIndexText.text);
+    private List<Wave[]> levels = new List<Wave[]>();
 
-        var json = Resources.Load<TextAsset>("WaveInfo");
+    private Wave currentWave;
+    private int currentWaveNumber;
+    private int levelIndex;
+    private bool canSpawn = true;
+    private bool nieco = false;
+    private float nextSpawnTime;
+    private float nextWaveTime;
 
-        var levels = JsonConvert.DeserializeObject<List<WaveInfo[]>>(json.text);
+    private void InitializeWaves(){
 
-        WaveInfo[] waves = levels[0];
+        level1[0] = new Wave(2, 3);
+        level1[1] = new Wave(3, 5);
+        level1[2] = new Wave(3, 5);
+        level1[3] = new Wave(3, 5);
+        level1[4] = new Wave(5, 3);
+
+        levels.Add(level1);
+        levels.Add(level2);
+        levels.Add(level3);
+        levels.Add(level4);
+        levels.Add(level5);
+        levels.Add(level6);
+        levels.Add(level7);
+        levels.Add(level8);
+        levels.Add(level9);
+        levels.Add(level10);
 
     }
 
-    public void SpawnEnemy(int amount = 1) {
+    private void Start(){
 
-        for (int i = 0; i < amount; i++) {
+        levelIndex = Convert.ToInt32(FindObjectOfType<LevelIndexManager>().levelIndex);
 
-            var rd = new System.Random();
+        InitializeWaves();
 
-            int rand = rd.Next(1, 6);
+    }
 
-            float x = 0f;
+    private void Update(){
 
-            // Translate rand to x position
-            for (int j = 0; j <= rand; j++) x += 1.25f;
+        currentWave = levels[levelIndex - 1][currentWaveNumber];
 
-            Vector3 spawnPosition = new Vector3(x, 0.5f, 11.25f);
+        SpawnWave();
 
-            GameObject newEnemy = Instantiate(enemyPrefab);
+        GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Ghoul");
 
-            newEnemy.transform.position = spawnPosition;
+        if (nieco && totalEnemies.Length == 0){
+
+            nextWaveTime = Time.time + waveDelay;
+
+            nieco = false;
 
         }
 
-        Debug.Log(amount + " enemies spawned!");
+        if (totalEnemies.Length == 0 && !canSpawn && nextWaveTime < Time.time && !nieco){
 
-    }
+            if ((currentWaveNumber + 1) != levels[levelIndex - 1].Length){
 
-    public class WaveInfo3 {
+                SpawnNextWave();
 
-        public WaveInfo2[] WaveInfo2 { get; set; }
+                DisplayNewWaveMessage(levels[levelIndex -1][currentWaveNumber].SpawnAmount);
 
-    }
+            } else {
 
-    public class WaveInfo2 {
+                FindObjectOfType<GameManager>().FinishLevel();
 
-        public WaveInfo[] WaveInfo { get; set; }
-
-    }
-
-    public class WaveInfo {
-
-        public int SpawnAmount { get; set; }
-        public int SpawnDelay { get; set; }
-
-    }
-
-    public void NewWave(WaveInfo[] waveInfo) {
-
-        DisplayNewWaveMessage();
-
-        foreach (WaveInfo wave in waveInfo) {
-
-            SpawnEnemy(wave.SpawnAmount);
-
-            //Delay(wave.SpawnDelay);
+            }
 
         }
 
     }
 
-    public void DisplayNewWaveMessage() {
+    private void SpawnNextWave(){
+
+        currentWaveNumber++;
+        canSpawn = true;
+
+    }
+
+    private void SpawnWave(){
+
+        if (canSpawn && nextSpawnTime < Time.time){
+
+            SpawnEnemy();
+
+            currentWave.SpawnAmount--;
+
+            nextSpawnTime = Time.time + currentWave.SpawnDelay;
+
+            if (currentWave.SpawnAmount == 0){
+
+                canSpawn = false;
+
+                nieco = true;
+
+            }
+
+        }
+
+    }
+
+    private void SpawnEnemy(){
+
+        var rd = new System.Random();
+
+        int rand = rd.Next(-1, 4);
+
+        float x = 0f;
+        const float y = 0.5f;
+        const float z = 11.25f;
+
+        // Translate rand to x position
+        for (int j = 0; j <= rand; j++) x += 1.25f;
+
+        Vector3 spawnPosition = new Vector3(x, y, z);
+
+        GameObject newEnemy = Instantiate(enemyPrefab);
+
+        newEnemy.transform.position = spawnPosition;
+
+    }
+
+    public void DisplayNewWaveMessage(int numOfEnemies){
 
         GameObject message = Instantiate(newWaveMessagePrefab, newWaveMessageParent);
+
+        message.GetComponent<Text>().text += $"{numOfEnemies} enemies";
 
         Destroy(message, 4f);
 

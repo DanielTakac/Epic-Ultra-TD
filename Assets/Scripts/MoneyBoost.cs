@@ -89,11 +89,11 @@ public class MoneyBoost : MonoBehaviour{
 
     void Update(){
 
-        if (Input.GetKeyDown("space")){
+        /*if (Input.GetKeyDown("space")){
 
             Activate();
 
-        }
+        }*/
 
         if (stage1){
 

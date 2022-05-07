@@ -145,11 +145,11 @@ public class MissileBoost : MonoBehaviour{
 
         }
 
-        if (Input.GetKeyDown("space")){
+        /*if (Input.GetKeyDown("space")){
 
             Activate();
 
-        }
+        }*/
 
         if (stage1){
 

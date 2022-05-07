@@ -12,7 +12,11 @@ public class MinigunBoost : MonoBehaviour{
 
     void Update(){
 
+        /*if (Input.GetKeyDown("space")){
 
-        
+            Activate();
+
+        }*/
+
     }
 }

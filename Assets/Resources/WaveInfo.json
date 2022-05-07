@@ -1,22 +1,24 @@
-[
-    [
-        {
-            "SpawnAmount": 2,
-            "SpawnDelay": 1
-        },
-        {
-            "SpawnAmount": 6,
-            "SpawnDelay": 4
-        }
-    ],
-    [
-        {
-            "SpawnAmount": 4,
-            "SpawnDelay": 2
-        },
-        {
-            "SpawnAmount": 2,
-            "SpawnDelay": 3
-        }
+{
+    "waveInfo": [
+        [
+            {
+                "SpawnAmount": 2,
+                "SpawnDelay": 1
+            },
+            {
+                "SpawnAmount": 6,
+                "SpawnDelay": 4
+            }
+        ],
+        [
+            {
+                "SpawnAmount": 4,
+                "SpawnDelay": 2
+            },
+            {
+                "SpawnAmount": 2,
+                "SpawnDelay": 3
+            }
+        ]
     ]
-]
+}
