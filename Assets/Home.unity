@@ -377,6 +377,7 @@ MonoBehaviour:
   - {fileID: 832088911}
   - {fileID: 301334447}
   - {fileID: 1036902847}
+  levelEnabled: 00000000000000000000
 --- !u!1 &121188955
 GameObject:
   m_ObjectHideFlags: 0
