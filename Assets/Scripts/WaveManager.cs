@@ -53,7 +53,7 @@ public class WaveManager : MonoBehaviour {
     private int currentWaveNumber;
     private int levelIndex;
     private bool canSpawn = true;
-    private bool nieco = false;
+    private bool a = false;
     private float nextSpawnTime;
     private float nextWaveTime;
 
@@ -94,15 +94,15 @@ public class WaveManager : MonoBehaviour {
 
         GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Ghoul");
 
-        if (nieco && totalEnemies.Length == 0){
+        if (a && totalEnemies.Length == 0){
 
             nextWaveTime = Time.time + waveDelay;
 
-            nieco = false;
+            a = false;
 
         }
 
-        if (totalEnemies.Length == 0 && !canSpawn && nextWaveTime < Time.time && !nieco){
+        if (totalEnemies.Length == 0 && !canSpawn && nextWaveTime < Time.time && !a){
 
             if ((currentWaveNumber + 1) != levels[levelIndex - 1].Length){
 
@@ -141,7 +141,7 @@ public class WaveManager : MonoBehaviour {
 
                 canSpawn = false;
 
-                nieco = true;
+                a = true;
 
             }
 

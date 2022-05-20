@@ -17,13 +17,13 @@ public class ProgressChecker : MonoBehaviour{
 
                 EnableLevel(i);
 
-                Debug.LogError($"Enable {i}");
+                //Debug.LogError($"Enable {i}");
 
             } else {
                 
                 DisableLevel(i);
 
-                Debug.LogError($"Disable {i}");
+                //Debug.LogError($"Disable {i}");
 
             }
 
