@@ -26,7 +26,11 @@ public class MinigunTurret : MonoBehaviour{
 
     public float shootDelay = 0.2f;
 
+    public float boostedShootDelay = 0.05f;
+
     private float attackTimer = 0f;
+
+    public bool isBoosted = false;
 
     void Start(){
 
@@ -42,13 +46,25 @@ public class MinigunTurret : MonoBehaviour{
 
         Ray myRay = new Ray(new Vector3(transform.position.x, transform.position.y + 0.25f, transform.position.z), new Vector3(0f, 0f, hitRadius));
 
-        if (Physics.Raycast(myRay, out RaycastHit hit, hitRadius, ghoulLayer)){
+        if (isBoosted && canShoot) {
 
-            if (hit.transform.gameObject.tag == "Ghoul" && canShoot){
+            attackTimer -= Time.deltaTime;
+
+            if (attackTimer <= 0f) {
+
+                attackTimer = boostedShootDelay;
+
+                SpawnBullet();
+
+            }
+
+        } else if (Physics.Raycast(myRay, out RaycastHit hit, hitRadius, ghoulLayer)) {
+
+            if (hit.transform.gameObject.tag == "Ghoul" && canShoot) {
 
                 attackTimer -= Time.deltaTime;
 
-                if (attackTimer <= 0f){
+                if (attackTimer <= 0f) {
 
                     attackTimer = shootDelay;
 

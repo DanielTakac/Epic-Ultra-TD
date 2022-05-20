@@ -13,6 +13,14 @@ public class MinigunBoost : MonoBehaviour{
     private GameObject[] enemies;
 
     public MeshRenderer mesh1;
+    public MeshRenderer mesh2;
+    public MeshRenderer mesh3;
+    public MeshRenderer mesh4;
+    public MeshRenderer mesh5;
+    public MeshRenderer mesh6;
+    public MeshRenderer mesh7;
+    public MeshRenderer mesh8;
+    public MeshRenderer mesh9;
 
     private Material originalMat1;
 
@@ -21,6 +29,7 @@ public class MinigunBoost : MonoBehaviour{
     public bool activated = false;
 
     private bool stage1 = false;
+    private bool stage2 = false;
 
     private void OnMouseEnter() {
 
@@ -82,8 +91,6 @@ public class MinigunBoost : MonoBehaviour{
 
         if (activated) return;
 
-        gameObject.GetComponent<MinigunTurret>().canShoot = false;
-
         activated = true;
 
         Stage1();
@@ -93,6 +100,17 @@ public class MinigunBoost : MonoBehaviour{
     private void Stage1() {
 
         stage1 = true;
+
+        gameObject.GetComponent<MinigunTurret>().isBoosted = true;
+
+    }
+
+    private void Stage2(){
+
+        stage1 = false;
+        stage2 = true;
+
+        gameObject.GetComponent<MinigunTurret>().isBoosted = false;
 
     }
 }
