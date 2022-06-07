@@ -46,9 +46,6 @@ public class MinigunBoost : MonoBehaviour{
     
     public float boostLength;
 
-    private bool stage1 = false;
-    private bool stage2 = false;
-
     private void OnMouseEnter() {
 
         if (BoostShop.boostSelected) {
@@ -161,8 +158,6 @@ public class MinigunBoost : MonoBehaviour{
 
     private void Stage1() {
 
-        stage1 = true;
-
         gameObject.GetComponent<MinigunTurret>().isBoosted = true;
 
         Invoke("Stage2", boostLength);
@@ -170,9 +165,6 @@ public class MinigunBoost : MonoBehaviour{
     }
 
     private void Stage2(){
-
-        stage1 = false;
-        stage2 = true;
 
         activated = false;
 

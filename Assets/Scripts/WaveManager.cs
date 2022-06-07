@@ -36,9 +36,9 @@ public class WaveManager : MonoBehaviour {
     public Transform newWaveMessageParent;
     public float waveDelay;
 
-    private Wave[] level1 = new Wave[5];
-    private Wave[] level2;
-    private Wave[] level3;
+    private Wave[] level1 = new Wave[4];
+    private Wave[] level2 = new Wave[4];
+    private Wave[] level3 = new Wave[5];
     private Wave[] level4;
     private Wave[] level5;
     private Wave[] level6;
@@ -63,7 +63,17 @@ public class WaveManager : MonoBehaviour {
         level1[1] = new Wave(3, 5);
         level1[2] = new Wave(3, 5);
         level1[3] = new Wave(3, 5);
-        level1[4] = new Wave(5, 3);
+
+        level2[0] = new Wave(3, 3);
+        level2[1] = new Wave(4, 5);
+        level2[2] = new Wave(4, 5);
+        level2[3] = new Wave(4, 5);
+
+        level3[0] = new Wave(3, 3);
+        level3[1] = new Wave(4, 3);
+        level3[2] = new Wave(4, 4);
+        level3[3] = new Wave(4, 5);
+        level3[4] = new Wave(5, 3);
 
         levels.Add(level1);
         levels.Add(level2);

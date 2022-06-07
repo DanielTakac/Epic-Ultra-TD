@@ -16,24 +16,31 @@ public class LevelLoader : MonoBehaviour{
 
     public void LoadLevel(int sceneIndex){
 
-        GameObject.FindObjectOfType<LevelIndexManager>().levelIndex = sceneIndex;
+        // Check if the previous level has been beaten
+        if (sceneIndex == 1 || PlayerPrefs.GetInt($"level{sceneIndex - 1}") == 1) {
 
-        StartCoroutine(LoadAsynchronously(1));
+            // Add custom check for level 0 later
+
+            GameObject.FindObjectOfType<LevelIndexManager>().levelIndex = sceneIndex;
+
+            StartCoroutine(LoadAsynchronously(sceneIndex));
+
+        }
 
     }
 
-    IEnumerator LoadAsynchronously(int sceneIndex){
+    IEnumerator LoadAsynchronously(int level){
 
         loadingScreen.SetActive(true);
 
-        levelText.text = (sceneIndex - 1).ToString("F0");
+        levelText.text = (level).ToString("F0");
 
         circle.fillAmount = 0;
         text.text = "0";
 
         yield return new WaitForSeconds(0.5f);
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(1);
 
         while (!operation.isDone){
 
