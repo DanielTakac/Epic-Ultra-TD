@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinigunTurret : MonoBehaviour{
+public class MinigunTurret : Turret {
 
     [Header("Setup")]
 
-    private SoundManager SoundManager;
+    private SoundManager soundManager;
 
     public GameObject bulletPrefab;
 
@@ -36,7 +36,7 @@ public class MinigunTurret : MonoBehaviour{
 
         attackTimer = shootDelay;
 
-        SoundManager = FindObjectOfType<SoundManager>();
+        soundManager = FindObjectOfType<SoundManager>();
 
     }
 

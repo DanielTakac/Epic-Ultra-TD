@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyTower : MonoBehaviour {
+public class MoneyTower : Turret {
 
     [Header("Setup")]
 
