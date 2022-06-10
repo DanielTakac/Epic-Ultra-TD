@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyBoost : MonoBehaviour{
+public class MoneyBoost : TurretBoost {
 
     [Header("Setup")]
 

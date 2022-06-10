@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DigitalRuby.LightningBolt;
 using UnityEngine;
 
-public class TeslaBoost : MonoBehaviour{
+public class TeslaBoost : TurretBoost {
 
     public GameObject linePrefab;
 

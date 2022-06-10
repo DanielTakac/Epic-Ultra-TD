@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VoyagerBoost : MonoBehaviour{
+public class VoyagerBoost : TurretBoost {
 
     [Header("Setup")]
 
