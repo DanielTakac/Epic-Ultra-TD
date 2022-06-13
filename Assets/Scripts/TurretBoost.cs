@@ -59,9 +59,14 @@ public abstract class TurretBoost : MonoBehaviour {
 
     protected void Start() {
 
-        for (int i = 0; i < originalMaterials.Count; i++) originalMaterials[i] = meshRenderers[i].material;
+        originalMaterials = new List<Material>();
+
+        for (int i = 0; i < meshRenderers.Count; i++) originalMaterials.Add(meshRenderers[i].material);
 
         soundManager = FindObjectOfType<SoundManager>();
+
+        // Debug.LogError("Original materials: " + originalMaterials.Count);
+        // Debug.LogError("Mesh renderers: " + meshRenderers.Count);
 
     }
 

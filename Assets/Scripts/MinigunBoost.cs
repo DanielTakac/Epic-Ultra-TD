@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class MinigunBoost : TurretBoost {
 
-    [Header("Setup")]
-
-    private GameObject[] enemies;
-
     [Header("Game Values")] 
     
     public float boostLength;

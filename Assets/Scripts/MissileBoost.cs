@@ -6,10 +6,6 @@ public class MissileBoost : TurretBoost {
 
     [Header("Setup")]
 
-    public Texture2D whiteCursor;
-
-    private SoundManager soundManager;
-
     public GameObject missilePrefab;
 
     public Transform rotatePart;
@@ -17,26 +13,6 @@ public class MissileBoost : TurretBoost {
     private GameObject[] enemies;
 
     private GameObject[] missile;
-
-    public MeshRenderer mesh1;
-    public MeshRenderer mesh2;
-    public MeshRenderer mesh3;
-    public MeshRenderer mesh4;
-    public MeshRenderer mesh5;
-    public MeshRenderer mesh6;
-    public MeshRenderer mesh7;
-
-    private Material originalMat1;
-    private Material originalMat2;
-    private Material originalMat3;
-    private Material originalMat4;
-    private Material originalMat5;
-    private Material originalMat6;
-    private Material originalMat7;
-
-    public Material hoverMat;
-
-    public bool activated = false;
 
     private bool stage1 = false;
 
@@ -58,76 +34,6 @@ public class MissileBoost : TurretBoost {
 
     public float maxHeight = 10f;
 
-    private void OnMouseEnter(){
-
-        if (BoostShop.boostSelected){
-
-            mesh1.material = hoverMat;
-            mesh2.material = hoverMat;
-            mesh3.material = hoverMat;
-            mesh4.material = hoverMat;
-            mesh5.material = hoverMat;
-            mesh6.material = hoverMat;
-            mesh7.material = hoverMat;
-
-        }
-
-    }
-
-    private void OnMouseExit(){
-
-        if (BoostShop.boostSelected){
-
-            mesh1.material = originalMat1;
-            mesh2.material = originalMat2;
-            mesh3.material = originalMat3;
-            mesh4.material = originalMat4;
-            mesh5.material = originalMat5;
-            mesh6.material = originalMat6;
-            mesh7.material = originalMat7;
-
-        }
-
-    }
-
-    private void OnMouseDown(){
-
-        Cursor.SetCursor(whiteCursor, Vector2.zero, CursorMode.ForceSoftware);
-
-        if (BoostShop.boostSelected && activated == false){
-
-            mesh1.material = originalMat1;
-            mesh2.material = originalMat2;
-            mesh3.material = originalMat3;
-            mesh4.material = originalMat4;
-            mesh5.material = originalMat5;
-            mesh6.material = originalMat6;
-            mesh7.material = originalMat7;
-
-            BoostShop.boostSelected = false;
-
-            BoostShop.boosts--;
-
-            Activate();
-
-        }
-
-    }
-
-    void Start(){
-
-        originalMat1 = mesh1.material;
-        originalMat2 = mesh2.material;
-        originalMat3 = mesh3.material;
-        originalMat4 = mesh4.material;
-        originalMat5 = mesh5.material;
-        originalMat6 = mesh6.material;
-        originalMat7 = mesh7.material;
-
-        soundManager = FindObjectOfType<SoundManager>();
-
-    }
-
     void Update(){
 
         if (noEnemies){
@@ -144,12 +50,6 @@ public class MissileBoost : TurretBoost {
             rotatePart.Rotate(rotateSpeed * Time.deltaTime, 0f, 0f);
 
         }
-
-        /*if (Input.GetKeyDown("space")){
-
-            Activate();
-
-        }*/
 
         if (stage1){
 
