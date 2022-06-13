@@ -5459,16 +5459,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderers:
-  - {fileID: 2689806939851559537}
-  - {fileID: 2689732057685555631}
   - {fileID: 2689899509677224459}
   - {fileID: 2689824670166499853}
-  - {fileID: 2689824670166499853}
   - {fileID: 2689966054799621349}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2689701542608564231}
+  - {fileID: 2689613184460677567}
+  - {fileID: 2689732057685555631}
+  - {fileID: 2689806939851559537}
+  hoverMat: {fileID: 2100000, guid: a23b608b15836fd40954e8cb6bf15fe5, type: 2}
   missilePrefab: {fileID: 28267761247728271, guid: e6104fea31a376243994284005fb10b9, type: 3}
   rotatePart: {fileID: 2668510965311513701}
   missileSpawnOffSet: {x: 0, y: 0.56, z: 0}

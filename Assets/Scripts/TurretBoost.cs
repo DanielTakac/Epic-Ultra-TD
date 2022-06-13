@@ -11,7 +11,7 @@ public abstract class TurretBoost : MonoBehaviour {
 
     protected List<Material> originalMaterials = new List<Material>();
 
-    protected Material hoverMat;
+    [SerializeField] protected Material hoverMat;
 
     protected Texture2D whiteCursor;
 
