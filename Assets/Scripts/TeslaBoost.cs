@@ -84,16 +84,6 @@ public class TeslaBoost : TurretBoost {
 
     }
 
-    void Update(){
-
-        /*if (Input.GetKeyDown("space")){
-
-            Activate();
-
-        }*/
-        
-    }
-
     void FixedUpdate(){
 
         if (stage1){
@@ -120,9 +110,9 @@ public class TeslaBoost : TurretBoost {
 
     }
 
-    private void Activate(){
+    public override void Activate(){
 
-        if (activated) { return; }
+        if (activated) return;
 
         gameObject.GetComponent<TeslaTurret>().canShoot = false;
 

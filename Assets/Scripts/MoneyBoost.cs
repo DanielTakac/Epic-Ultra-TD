@@ -89,12 +89,6 @@ public class MoneyBoost : TurretBoost {
 
     void Update(){
 
-        /*if (Input.GetKeyDown("space")){
-
-            Activate();
-
-        }*/
-
         if (stage1){
 
             coin1.position += new Vector3(speed * Time.deltaTime, 0f, 0f);
@@ -150,7 +144,7 @@ public class MoneyBoost : TurretBoost {
 
     }
 
-    public void Activate(){
+    public override void Activate(){
 
         if (activated) return;
 

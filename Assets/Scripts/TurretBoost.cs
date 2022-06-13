@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// This class provides all basic functions of a turret boost and is inherited in all turret boosts
+// This class provides all basic functions of a turret boost and is inherited in all boost classes
 
 public abstract class TurretBoost : MonoBehaviour {
 
@@ -57,6 +57,14 @@ public abstract class TurretBoost : MonoBehaviour {
 
     }
 
-    protected abstract void Activate();
+    protected void Start() {
+
+        for (int i = 0; i < originalMaterials.Count; i++) originalMaterials[i] = meshRenderers[i].material;
+
+        soundManager = FindObjectOfType<SoundManager>();
+
+    }
+
+    public abstract void Activate();
 
 }

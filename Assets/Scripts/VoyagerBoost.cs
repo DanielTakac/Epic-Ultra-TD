@@ -228,7 +228,7 @@ public class VoyagerBoost : TurretBoost {
 
     }
 
-    public void Activate(){
+    public override void Activate(){
 
         if (activated) return;
 

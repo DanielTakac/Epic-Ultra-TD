@@ -242,7 +242,7 @@ public class MissileBoost : TurretBoost {
         
     }
 
-    public void Activate(){
+    public override void Activate() {
 
         if (activated) return;
 

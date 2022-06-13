@@ -12,26 +12,7 @@ public class MinigunBoost : TurretBoost {
     
     public float boostLength;
 
-    void Start() {
-
-        originalMat1 = mesh1.material;
-        originalMat2 = mesh2.material;
-        originalMat3 = mesh3.material;
-        originalMat4 = mesh4.material;
-        originalMat5 = mesh5.material;
-        originalMat6 = mesh6.material;
-        originalMat7 = mesh7.material;
-        originalMat8 = mesh8.material;
-        originalMat9 = mesh9.material;
-        originalMat10 = mesh10.material;
-        originalMat11 = mesh11.material;
-        originalMat12 = mesh12.material;
-
-        soundManager = FindObjectOfType<SoundManager>();
-
-    }
-
-    protected override void Activate() {
+    public override void Activate() {
 
         if (activated) return;
 
@@ -56,4 +37,5 @@ public class MinigunBoost : TurretBoost {
         gameObject.GetComponent<MinigunTurret>().isBoosted = false;
 
     }
+
 }
