@@ -739,6 +739,7 @@ GameObject:
   - component: {fileID: 68611215}
   - component: {fileID: 68611217}
   - component: {fileID: 68611218}
+  - component: {fileID: 68611219}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -813,6 +814,25 @@ MonoBehaviour:
   newWaveMessagePrefab: {fileID: 3546849912995689898, guid: 0eba8061b0ca4d24eb0f596047df2a9e, type: 3}
   newWaveMessageParent: {fileID: 653909478}
   waveDelay: 5
+--- !u!114 &68611219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68611214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2194ac2ae6c136546ab029fe5133b189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cancelBuildingObject: {fileID: 609142468}
+  turretInfosArray:
+  - {fileID: 277437784}
+  - {fileID: 530200258}
+  - {fileID: 388601631}
+  - {fileID: 2035649933}
+  - {fileID: 389642564}
 --- !u!4 &69692033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7144069148631725870, guid: 28140c2371d6ec944bd3b3f863eb4b76, type: 3}
@@ -6112,10 +6132,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 609142471}
-        m_TargetAssemblyTypeName: CancelBuilding, Assembly-CSharp
-        m_MethodName: CancelBuildingFunction
-        m_Mode: 1
+      - m_Target: {fileID: 68611219}
+        m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
+        m_MethodName: CancelBuilding
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9216,7 +9236,6 @@ GameObject:
   - component: {fileID: 904743531}
   - component: {fileID: 904743533}
   - component: {fileID: 904743532}
-  - component: {fileID: 904743534}
   - component: {fileID: 904743535}
   m_Layer: 5
   m_Name: ClickablePanel
@@ -9295,18 +9314,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904743530}
   m_CullTransparentMesh: 1
---- !u!114 &904743534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904743530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2194ac2ae6c136546ab029fe5133b189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &904743535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19821,6 +19828,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11500000, guid: 2194ac2ae6c136546ab029fe5133b189, type: 3}
+        m_TargetAssemblyTypeName: MissileTowerClicked, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
 --- !u!114 &2072545805
 MonoBehaviour:
   m_ObjectHideFlags: 0
