@@ -58,6 +58,8 @@ public class TurretShop : MonoBehaviour {
         turretButtons.Add("minigun", turretButtonsArray[3]);
         turretButtons.Add("missile", turretButtonsArray[4]);
 
+        cancelBuildingObject.SetActive(false);
+
     }
 
     public void CancelBuilding(string turretName) => turretsClicked[turretName] = false;
@@ -81,31 +83,9 @@ public class TurretShop : MonoBehaviour {
 
         }
 
-        if (turretsClicked[turretName]) {
-
-            // Unselect
-
-        } else {
-
-            // Select
-
-        }
-
-        turretsClicked[turretName] = true;
-
-        cancelBuildingObject.SetActive(true);
-
         var colors = turretButtons[turretName].GetComponent<Button>().colors;
 
         if (turretsClicked[turretName]) {
-
-            colors.normalColor = turretPressedColor;
-            colors.highlightedColor = turretPressedColor;
-            colors.pressedColor = turretPressedColor;
-            colors.selectedColor = turretPressedColor;
-            colors.disabledColor = turretPressedColor;
-
-        } else {
 
             colors.normalColor = turretNotPressedColor;
             colors.highlightedColor = turretNotPressedColor;
@@ -113,11 +93,29 @@ public class TurretShop : MonoBehaviour {
             colors.selectedColor = turretNotPressedColor;
             colors.disabledColor = turretNotPressedColor;
 
+            turretsClicked[turretName] = false;
+
+            cancelBuildingObject.SetActive(false);
+
+            Debug.LogError(turretName + " unselected");
+
+        } else {
+
+            colors.normalColor = turretPressedColor;
+            colors.highlightedColor = turretPressedColor;
+            colors.pressedColor = turretPressedColor;
+            colors.selectedColor = turretPressedColor;
+            colors.disabledColor = turretPressedColor;
+
+            turretsClicked[turretName] = true;
+
+            cancelBuildingObject.SetActive(true);
+
+            Debug.LogError(turretName + " selected");
+
         }
 
         turretButtons[turretName].GetComponent<Button>().colors = colors;
-
-        Debug.LogError(turretName);
 
     }
 

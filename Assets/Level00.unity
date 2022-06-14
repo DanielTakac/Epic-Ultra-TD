@@ -2861,7 +2861,6 @@ GameObject:
   - component: {fileID: 378783856}
   - component: {fileID: 378783855}
   - component: {fileID: 378783854}
-  - component: {fileID: 378783853}
   - component: {fileID: 378783857}
   m_Layer: 5
   m_Name: MinigunTurret
@@ -2891,20 +2890,6 @@ RectTransform:
   m_AnchoredPosition: {x: -45, y: -162.88}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &378783853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378783851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6652f534c4ed2a489b41a0b4377505e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cancelBuildingObject: {fileID: 609142468}
-  turretInfo: {fileID: 2035649933}
 --- !u!114 &378783854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2949,16 +2934,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 378783853}
-        m_TargetAssemblyTypeName: MinigunTowerClicked, Assembly-CSharp
+      - m_Target: {fileID: 68611219}
+        m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
         m_MethodName: ClickTurretIcon
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: minigun
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &378783855
@@ -3016,32 +3001,32 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 378783853}
-          m_TargetAssemblyTypeName: MinigunTowerClicked, Assembly-CSharp
+        - m_Target: {fileID: 68611219}
+          m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
           m_MethodName: ShowTurretInfo
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: minigun
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 378783853}
-          m_TargetAssemblyTypeName: MinigunTowerClicked, Assembly-CSharp
+        - m_Target: {fileID: 68611219}
+          m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
           m_MethodName: HideTurretInfo
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: minigun
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1001 &379186498
@@ -7022,7 +7007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 258, y: -157.88}
+  m_AnchoredPosition: {x: 199.07, y: -157.88}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &679951050
@@ -12117,7 +12102,6 @@ GameObject:
   - component: {fileID: 1218165511}
   - component: {fileID: 1218165510}
   - component: {fileID: 1218165513}
-  - component: {fileID: 1218165512}
   - component: {fileID: 1218165514}
   m_Layer: 5
   m_Name: VoyagerTurret
@@ -12185,20 +12169,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218165508}
   m_CullTransparentMesh: 1
---- !u!114 &1218165512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218165508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a575caa4500c414797f5aa82502a178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cancelBuildingObject: {fileID: 609142468}
-  turretInfo: {fileID: 277437784}
 --- !u!114 &1218165513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12243,16 +12213,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1218165512}
-        m_TargetAssemblyTypeName: TurretIcon, Assembly-CSharp
+      - m_Target: {fileID: 68611219}
+        m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
         m_MethodName: ClickTurretIcon
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: voyager
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1218165514
@@ -12272,32 +12242,32 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1218165512}
-          m_TargetAssemblyTypeName: VoyagerClicked, Assembly-CSharp
+        - m_Target: {fileID: 68611219}
+          m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
           m_MethodName: ShowTurretInfo
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: voyager
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1218165512}
-          m_TargetAssemblyTypeName: VoyagerClicked, Assembly-CSharp
+        - m_Target: {fileID: 68611219}
+          m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
           m_MethodName: HideTurretInfo
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: voyager
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1220792093
@@ -17799,7 +17769,6 @@ GameObject:
   - component: {fileID: 1835070868}
   - component: {fileID: 1835070867}
   - component: {fileID: 1835070866}
-  - component: {fileID: 1835070865}
   - component: {fileID: 1835070869}
   m_Layer: 5
   m_Name: TeslaTurret
@@ -17829,20 +17798,6 @@ RectTransform:
   m_AnchoredPosition: {x: -145, y: -162.88}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1835070865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1835070863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c5c0a94ef3a69d4ca5e27d5a8683860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cancelBuildingObject: {fileID: 609142468}
-  turretInfo: {fileID: 530200258}
 --- !u!114 &1835070866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17887,16 +17842,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1835070865}
-        m_TargetAssemblyTypeName: TeslaTowerClicked, Assembly-CSharp
+      - m_Target: {fileID: 68611219}
+        m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
         m_MethodName: ClickTurretIcon
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: tesla
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1835070867
@@ -17954,32 +17909,32 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1835070865}
-          m_TargetAssemblyTypeName: TeslaTowerClicked, Assembly-CSharp
+        - m_Target: {fileID: 68611219}
+          m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
           m_MethodName: ShowTurretInfo
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: tesla
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1835070865}
-          m_TargetAssemblyTypeName: TeslaTowerClicked, Assembly-CSharp
+        - m_Target: {fileID: 68611219}
+          m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
           m_MethodName: HideTurretInfo
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: tesla
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1001 &1838561875
@@ -19721,7 +19676,6 @@ GameObject:
   - component: {fileID: 2072545806}
   - component: {fileID: 2072545805}
   - component: {fileID: 2072545804}
-  - component: {fileID: 2072545803}
   - component: {fileID: 2072545807}
   m_Layer: 5
   m_Name: MissileTurret
@@ -19751,20 +19705,6 @@ RectTransform:
   m_AnchoredPosition: {x: 55, y: -162.88}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2072545803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072545801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cc5f32aa3b1aad4db7eb700b1c6f9fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cancelBuildingObject: {fileID: 609142468}
-  turretInfo: {fileID: 389642564}
 --- !u!114 &2072545804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19809,30 +19749,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2072545803}
-        m_TargetAssemblyTypeName: MissileTowerClicked, Assembly-CSharp
+      - m_Target: {fileID: 68611219}
+        m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
         m_MethodName: ClickTurretIcon
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: missile
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11500000, guid: 2194ac2ae6c136546ab029fe5133b189, type: 3}
-        m_TargetAssemblyTypeName: MissileTowerClicked, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
 --- !u!114 &2072545805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19888,32 +19816,32 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2072545803}
-          m_TargetAssemblyTypeName: MissileTowerClicked, Assembly-CSharp
+        - m_Target: {fileID: 68611219}
+          m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
           m_MethodName: ShowTurretInfo
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: missile
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2072545803}
-          m_TargetAssemblyTypeName: MissileTowerClicked, Assembly-CSharp
+        - m_Target: {fileID: 68611219}
+          m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
           m_MethodName: HideTurretInfo
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: missile
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1001 &2076485915
