@@ -833,6 +833,14 @@ MonoBehaviour:
   - {fileID: 388601631}
   - {fileID: 2035649933}
   - {fileID: 389642564}
+  turretButtonsArray:
+  - {fileID: 1218165508}
+  - {fileID: 1835070863}
+  - {fileID: 496227078}
+  - {fileID: 378783851}
+  - {fileID: 2072545801}
+  turretPressedColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+  turretNotPressedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &69692033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7144069148631725870, guid: 28140c2371d6ec944bd3b3f863eb4b76, type: 3}
@@ -4584,7 +4592,6 @@ GameObject:
   - component: {fileID: 496227083}
   - component: {fileID: 496227082}
   - component: {fileID: 496227081}
-  - component: {fileID: 496227080}
   - component: {fileID: 496227084}
   m_Layer: 5
   m_Name: MoneyTurret
@@ -4614,20 +4621,6 @@ RectTransform:
   m_AnchoredPosition: {x: -345, y: -162.88}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &496227080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496227078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ebc669069efa4849a4e243c4a3c1561, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cancelBuildingObject: {fileID: 609142468}
-  turretInfo: {fileID: 388601631}
 --- !u!114 &496227081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4672,16 +4665,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496227080}
-        m_TargetAssemblyTypeName: MoneyTowerClicked, Assembly-CSharp
+      - m_Target: {fileID: 68611219}
+        m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
         m_MethodName: ClickTurretIcon
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: money
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &496227082
@@ -4739,32 +4732,32 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 496227080}
-          m_TargetAssemblyTypeName: MoneyTowerClicked, Assembly-CSharp
+        - m_Target: {fileID: 68611219}
+          m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
           m_MethodName: ShowTurretInfo
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: money
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 496227080}
-          m_TargetAssemblyTypeName: MoneyTowerClicked, Assembly-CSharp
+        - m_Target: {fileID: 68611219}
+          m_TargetAssemblyTypeName: TurretShop, Assembly-CSharp
           m_MethodName: HideTurretInfo
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: money
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1001 &506162321
