@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2194ac2ae6c136546ab029fe5133b189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cancelBuildingObject: {fileID: 609142468}
+  test: {fileID: 1027462146}
   turretInfosArray:
   - {fileID: 277437784}
   - {fileID: 530200258}
@@ -839,6 +839,12 @@ MonoBehaviour:
   - {fileID: 496227078}
   - {fileID: 378783851}
   - {fileID: 2072545801}
+  turretPrefabsArray:
+  - {fileID: 7843322793781749326, guid: 28b8b31482f472347b84df0dbdf17d12, type: 3}
+  - {fileID: 125080454622969170, guid: 88b307cb8640d9349a68d3934afb098c, type: 3}
+  - {fileID: 6863294973839648793, guid: 2144e94fafc9e024b892ce3415313ff5, type: 3}
+  - {fileID: 509203018124020660, guid: b344ab25d3fdc0a4dbf38e9af679d2cc, type: 3}
+  - {fileID: 2667191717518548745, guid: d004a37b3dfc26d4b973162b72d06d6a, type: 3}
   turretPressedColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
   turretNotPressedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &69692033 stripped

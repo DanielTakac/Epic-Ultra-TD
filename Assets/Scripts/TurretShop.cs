@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class TurretShop : MonoBehaviour {
 
-    public static bool voyagerClicked = false;
-    public static bool teslaClicked = false;
-    public static bool moneyClicked = false;
-    public static bool minigunClicked = false;
-    public static bool missileClicked = false;
-
-    [SerializeField] private GameObject cancelBuildingObject;
+    [SerializeField] private Transform test;
 
     // I had to create a serialized array and put the values from it to the dictionary because unity is retarded and can't serialize a dictionary
     [SerializeField] private GameObject[] turretInfosArray;
     [SerializeField] private GameObject[] turretButtonsArray;
+    [SerializeField] private GameObject[] turretPrefabsArray;
 
     private Dictionary<string, GameObject> turretInfos = new Dictionary<string, GameObject>();
     private Dictionary<string, GameObject> turretButtons = new Dictionary<string, GameObject>();
+    private Dictionary<string, GameObject> turretPrefabs = new Dictionary<string, GameObject>();
 
     private Dictionary<string, bool> turretsClicked = new Dictionary<string, bool> {
         { "voyager", false },
@@ -27,14 +23,22 @@ public class TurretShop : MonoBehaviour {
         { "missile", false }
     };
 
+    private Dictionary<string, int> turretPrices = new Dictionary<string, int> {
+        { "voyager", 50 },
+        { "tesla", 100 },
+        { "money", 125 },
+        { "minigun", 175 },
+        { "missile", 250 }
+    };
+
     [SerializeField] private Color turretPressedColor;
     [SerializeField] private Color turretNotPressedColor;
 
     private void Start() {
 
-        if (turretInfosArray.Length != 5) {
+        if (turretInfosArray.Length != 5 || turretButtonsArray.Length != 5 || turretPrefabsArray.Length != 5) {
             
-            Debug.LogError("Not all turret infos added to turretInfosArray!");
+            Debug.LogError("Not all items added to arrays in unity inspector!");
             return;
 
         }
@@ -45,24 +49,27 @@ public class TurretShop : MonoBehaviour {
         turretInfos.Add("minigun", turretInfosArray[3]);
         turretInfos.Add("missile", turretInfosArray[4]);
 
-        if (turretButtonsArray.Length != 5) {
-
-            Debug.LogError("Not all turret buttons added to turretButtonsArray!");
-            return;
-
-        }
-
         turretButtons.Add("voyager", turretButtonsArray[0]);
         turretButtons.Add("tesla", turretButtonsArray[1]);
         turretButtons.Add("money", turretButtonsArray[2]);
         turretButtons.Add("minigun", turretButtonsArray[3]);
         turretButtons.Add("missile", turretButtonsArray[4]);
 
-        cancelBuildingObject.SetActive(false);
+        turretPrefabs.Add("voyager", turretPrefabsArray[0]);
+        turretPrefabs.Add("tesla", turretPrefabsArray[1]);
+        turretPrefabs.Add("money", turretPrefabsArray[2]);
+        turretPrefabs.Add("minigun", turretPrefabsArray[3]);
+        turretPrefabs.Add("missile", turretPrefabsArray[4]);
+
+        // TEST
+
+        turretsClicked["minigun"] = true;
+
+        foreach (Transform child in test) SpawnTurret(child);
+
+        // TEST
 
     }
-
-    public void CancelBuilding(string turretName) => turretsClicked[turretName] = false;
 
     public void ShowTurretInfo(string turretName) => turretInfos[turretName].SetActive(true);
 
@@ -95,8 +102,6 @@ public class TurretShop : MonoBehaviour {
 
             turretsClicked[turretName] = false;
 
-            cancelBuildingObject.SetActive(false);
-
             Debug.LogError(turretName + " unselected");
 
         } else {
@@ -109,13 +114,44 @@ public class TurretShop : MonoBehaviour {
 
             turretsClicked[turretName] = true;
 
-            cancelBuildingObject.SetActive(true);
-
             Debug.LogError(turretName + " selected");
 
         }
 
         turretButtons[turretName].GetComponent<Button>().colors = colors;
+
+    }
+
+    private string GetSelectedTurret() {
+
+        foreach (KeyValuePair<string, bool> item in turretsClicked) {
+
+            if (item.Value) return item.Key;
+
+        }
+
+        return string.Empty;
+
+    }
+
+    public void SpawnTurret(Transform tile) {
+
+        string turretName = GetSelectedTurret();
+
+        if (turretName == string.Empty) {
+
+            Debug.LogError("No turret selected!");
+            return;
+
+        }
+
+        var turretInstance = Instantiate(turretPrefabs[turretName], tile);
+
+        turretInstance.transform.position = new Vector3(tile.position.x, turretInstance.transform.position.y, tile.position.z);
+
+        GameManager.money -= turretPrices[turretName];
+
+        FindObjectOfType<SoundManager>().TurretSpawn();
 
     }
 
