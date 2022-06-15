@@ -20,6 +20,7 @@ TagManager:
   - Tile
   - Line
   - TileTarget
+  - TileParent
   layers:
   - Default
   - TransparentFX

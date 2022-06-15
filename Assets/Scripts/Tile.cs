@@ -11,7 +11,7 @@ public class Tile : MonoBehaviour{
 
     public MeshRenderer mesh;
 
-    private bool hasTower = false;
+    public bool hasTower { get; set; }
 
 
     private void OnMouseEnter(){
@@ -27,9 +27,6 @@ public class Tile : MonoBehaviour{
     }
 
     private void OnMouseDown(){
-
-        // Returs if a turret is already placed on the tile
-        if (hasTower) return;
 
         FindObjectOfType<TurretShop>().SpawnTurret(transform);
 

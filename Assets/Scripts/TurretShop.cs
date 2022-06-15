@@ -15,7 +15,7 @@ public class TurretShop : MonoBehaviour {
     private Dictionary<string, GameObject> turretButtons = new Dictionary<string, GameObject>();
     private Dictionary<string, GameObject> turretPrefabs = new Dictionary<string, GameObject>();
 
-    private Dictionary<string, bool> turretsClicked = new Dictionary<string, bool> {
+    public Dictionary<string, bool> turretsClicked = new Dictionary<string, bool> {
         { "voyager", false },
         { "tesla", false },
         { "money", false },
@@ -63,9 +63,11 @@ public class TurretShop : MonoBehaviour {
 
         // TEST
 
-        turretsClicked["minigun"] = true;
+        turretsClicked["tesla"] = true;
 
         foreach (Transform child in test) SpawnTurret(child);
+
+        turretsClicked["tesla"] = false;
 
         // TEST
 
@@ -136,6 +138,9 @@ public class TurretShop : MonoBehaviour {
 
     public void SpawnTurret(Transform tile) {
 
+        // Returs if a turret is already placed on the tile
+        if (tile.gameObject.GetComponent<Tile>().hasTower) return;
+
         string turretName = GetSelectedTurret();
 
         if (turretName == string.Empty) {
@@ -152,6 +157,8 @@ public class TurretShop : MonoBehaviour {
         GameManager.money -= turretPrices[turretName];
 
         FindObjectOfType<SoundManager>().TurretSpawn();
+
+        tile.gameObject.GetComponent<Tile>().hasTower = true;
 
     }
 
