@@ -61,16 +61,6 @@ public class TurretShop : MonoBehaviour {
         turretPrefabs.Add("minigun", turretPrefabsArray[3]);
         turretPrefabs.Add("missile", turretPrefabsArray[4]);
 
-        // TEST
-
-        turretsClicked["tesla"] = true;
-
-        foreach (Transform child in test) SpawnTurret(child);
-
-        turretsClicked["tesla"] = false;
-
-        // TEST
-
     }
 
     public void ShowTurretInfo(string turretName) => turretInfos[turretName].SetActive(true);
@@ -79,18 +69,12 @@ public class TurretShop : MonoBehaviour {
 
     public void ClickTurretIcon(string turretName) {
 
-        // Return if another turret is already selected
-        foreach (KeyValuePair<string, bool> turretClicked in turretsClicked) {
-
-            if (turretClicked.Value && turretClicked.Key != turretName) {
-
-                Debug.LogError("Another turret already selected");
-
-                return;
-
-            }
-
-        }
+        // Unselects every other turret
+        if (turretName != "voyager") turretsClicked["voyager"] = false;
+        if (turretName != "tesla") turretsClicked["tesla"] = false;
+        if (turretName != "money") turretsClicked["money"] = false;
+        if (turretName != "minigun") turretsClicked["minigun"] = false;
+        if (turretName != "missile") turretsClicked["missile"] = false;
 
         var colors = turretButtons[turretName].GetComponent<Button>().colors;
 
