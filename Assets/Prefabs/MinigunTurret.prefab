@@ -283,6 +283,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5816068258171d8488f780d12afe690f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshRenderers:
+  - {fileID: 524233488404863344}
+  - {fileID: 524373097103124968}
+  - {fileID: 522707716541585062}
+  - {fileID: 524432927541538088}
+  - {fileID: 524179663763611336}
+  - {fileID: 524342249650964300}
+  - {fileID: 524415771705502632}
+  - {fileID: 524533104848044946}
+  - {fileID: 524322104336378786}
+  - {fileID: 522699922383849744}
+  - {fileID: 522918150913261884}
+  - {fileID: 524542427104351434}
   whiteCursor: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
   mesh1: {fileID: 524233488404863344}
   mesh2: {fileID: 524373097103124968}
@@ -296,7 +309,6 @@ MonoBehaviour:
   mesh10: {fileID: 522699922383849744}
   mesh11: {fileID: 522918150913261884}
   mesh12: {fileID: 524542427104351434}
-  mesh13: {fileID: 0}
   hoverMat: {fileID: 2100000, guid: a23b608b15836fd40954e8cb6bf15fe5, type: 2}
   activated: 0
   boostLength: 16

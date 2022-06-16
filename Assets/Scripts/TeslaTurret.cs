@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DigitalRuby.LightningBolt;
 using UnityEngine;
 
-public class TeslaTurret : MonoBehaviour{
+public class TeslaTurret : Turret {
 
     [Header("Setup")]
 

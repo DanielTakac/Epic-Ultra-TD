@@ -3,19 +3,9 @@ using System.Collections.Generic;
 using DigitalRuby.LightningBolt;
 using UnityEngine;
 
-public class TeslaBoost : MonoBehaviour{
+public class TeslaBoost : TurretBoost {
 
     public GameObject linePrefab;
-
-    private MeshRenderer mesh;
-
-    public Material hoverMat;
-
-    private Material originalMat;
-
-    public Texture2D whiteCursor;
-
-    private SoundManager soundManager;
 
     private Ghoul[] enemies;
 
@@ -32,67 +22,7 @@ public class TeslaBoost : MonoBehaviour{
     public GameObject coil3;
     public GameObject coil4;
 
-    private bool activated = false;
-
     private int hitCycle = 0;
-
-    private void OnMouseEnter(){
-
-        if (BoostShop.boostSelected){
-
-            mesh.material = hoverMat;
-
-        }
-
-    }
-
-    private void OnMouseExit(){
-
-        if (BoostShop.boostSelected){
-
-            mesh.material = originalMat;
-
-        }
-
-    }
-
-    private void OnMouseDown(){
-
-        Cursor.SetCursor(whiteCursor, Vector2.zero, CursorMode.ForceSoftware);
-
-        if (BoostShop.boostSelected && activated == false){
-
-            mesh.material = originalMat;
-
-            BoostShop.boostSelected = false;
-
-            BoostShop.boosts--;
-
-            Activate();
-
-        }
-
-    }
-
-    void Start(){
-
-        mesh = gameObject.GetComponent<MeshRenderer>();
-
-        originalMat = gameObject.GetComponent<MeshRenderer>().material;
-
-        soundManager = FindObjectOfType<SoundManager>();
-
-    }
-
-    void Update(){
-
-        /*if (Input.GetKeyDown("space")){
-
-            Activate();
-
-        }*/
-        
-    }
 
     void FixedUpdate(){
 
@@ -120,9 +50,9 @@ public class TeslaBoost : MonoBehaviour{
 
     }
 
-    private void Activate(){
+    public override void Activate(){
 
-        if (activated) { return; }
+        if (activated) return;
 
         gameObject.GetComponent<TeslaTurret>().canShoot = false;
 

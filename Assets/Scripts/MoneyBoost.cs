@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyBoost : MonoBehaviour{
+public class MoneyBoost : TurretBoost {
 
     [Header("Setup")]
-
-    public Texture2D whiteCursor;
 
     public GameObject coinPrefab;
 
@@ -14,15 +12,6 @@ public class MoneyBoost : MonoBehaviour{
     private Transform coin2;
     private Transform coin3;
     private Transform coin4;
-
-    public MeshRenderer mesh1;
-    public MeshRenderer mesh2;
-
-    private Material originalMat1;
-    private Material originalMat2;
-    public Material hoverMat;
-
-    public bool activated = false;
 
     private bool stage1 = false;
     private bool stage2 = false;
@@ -39,61 +28,7 @@ public class MoneyBoost : MonoBehaviour{
 
     public int moneyToGenerate = 100;
 
-    private void OnMouseEnter(){
-
-        if (BoostShop.boostSelected){
-
-            mesh1.material = hoverMat;
-            mesh2.material = hoverMat;
-
-        }
-
-    }
-
-    private void OnMouseExit(){
-
-        if (BoostShop.boostSelected){
-            
-            mesh1.material = originalMat1;
-            mesh2.material = originalMat2;
-
-        }
-
-    }
-
-    private void OnMouseDown(){
-
-        Cursor.SetCursor(whiteCursor, Vector2.zero, CursorMode.ForceSoftware);
-
-        if (BoostShop.boostSelected && activated == false){
-
-            mesh1.material = originalMat1;
-            mesh2.material = originalMat2;
-
-            BoostShop.boostSelected = false;
-
-            BoostShop.boosts--;
-
-            Activate();
-
-        }
-        
-    }
-
-    void Start(){
-
-        originalMat1 = mesh1.material;
-        originalMat2 = mesh2.material;
-        
-    }
-
     void Update(){
-
-        /*if (Input.GetKeyDown("space")){
-
-            Activate();
-
-        }*/
 
         if (stage1){
 
@@ -150,7 +85,7 @@ public class MoneyBoost : MonoBehaviour{
 
     }
 
-    public void Activate(){
+    public override void Activate(){
 
         if (activated) return;
 

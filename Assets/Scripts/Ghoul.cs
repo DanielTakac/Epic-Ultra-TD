@@ -84,24 +84,6 @@ public class Ghoul : MonoBehaviour {
 
     void Update(){
 
-        /*Pepelaugh oh no no no no
-        //Computer go BOOM
-        //
-        //
-        if(timer > 30f){
-
-        timer = 0f;
-
-        GameObject newGhoul = Instantiate(ghoulPrefab);
-        newGhoul.transform.position = transform.position;
-        
-        }
-
-        timer += Time.deltaTime
-        //
-        //
-        */
-
         if (!hasDied){
 
             if (healthBarCanvas != null){
@@ -258,7 +240,7 @@ public class Ghoul : MonoBehaviour {
 
         tower.TakeDamage(damage);
 
-        if(tower.health <= 0){
+        if (tower.Health <= 0){
 
             tower.destroyedBy = gameObject;
 

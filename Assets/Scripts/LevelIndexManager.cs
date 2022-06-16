@@ -7,7 +7,9 @@ public class LevelIndexManager : MonoBehaviour{
 
     public int levelIndex;
 
-    void Awake(){
+    void Awake() {
+
+        if (GameObject.FindObjectsOfType<LevelIndexManager>().Length > 1) Destroy(gameObject);
 
         DontDestroyOnLoad(this);
         
