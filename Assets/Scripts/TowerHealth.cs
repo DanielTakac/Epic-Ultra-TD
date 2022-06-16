@@ -2,27 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerHealth : MonoBehaviour{
+public class TowerHealth : MonoBehaviour {
 
-    [Header("Setup")]
-
-    public GameObject deathEffectPrefab;
+    [SerializeField] private GameObject deathEffectPrefab;
 
     private bool hasDied = false;
 
-    [Header ("Game Values")]
+    [SerializeField] public int Health { get; private set; }
 
-    public int health = 100;
+    public bool Shield { get; private set; }
 
-    public bool shield = false;
-
-    [Header ("Dont Asign In Editor")]
+    [Header("Dont Asign In Editor")]
+    
+    public Tile tile;
 
     public GameObject destroyedBy;
 
-    void Update(){
+    private void Start() {
 
-        if(health <= 0 && hasDied == false){
+        this.Health = 100;
+        
+        this.Shield = false;
+
+    }
+
+    void Update() {
+
+        if (Health <= 0 && !hasDied){
 
             DestroyTower();
 
@@ -32,15 +38,15 @@ public class TowerHealth : MonoBehaviour{
         
     }
 
-    private void DestroyTower(){
+    private void DestroyTower() {
+
+        tile.hasTower = false;
 
         GameObject effect = Instantiate(deathEffectPrefab);
 
         effect.transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
 
         Destroy(effect, 3f);
-
-        Debug.Log("Tower Destroyed");
 
         destroyedBy.GetComponent<Ghoul>().Invoke("StartIdle", 0.4f);
         destroyedBy.GetComponent<Ghoul>().Invoke("StartWalking", 2.4f);
@@ -49,26 +55,14 @@ public class TowerHealth : MonoBehaviour{
 
     }
 
-    public void TakeDamage(int damage){
+    public void TakeDamage(int damage) {
 
-        if (shield == false){
-
-            health -= damage;
-
-        }
+        if (!Shield) Health -= damage;
 
     }
 
-    public void GetShield(){
+    public void GetShield() => Shield = true;
 
-        shield = true;
-
-    }
-
-    public void BreakShield(){
-
-        shield = false;
-
-    }
+    public void BreakShield() => Shield = false;
 
 }

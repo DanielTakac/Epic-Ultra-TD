@@ -845,7 +845,7 @@ MonoBehaviour:
   - {fileID: 6863294973839648793, guid: 2144e94fafc9e024b892ce3415313ff5, type: 3}
   - {fileID: 509203018124020660, guid: b344ab25d3fdc0a4dbf38e9af679d2cc, type: 3}
   - {fileID: 2667191717518548745, guid: d004a37b3dfc26d4b973162b72d06d6a, type: 3}
-  turretPressedColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+  turretPressedColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   turretNotPressedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &69692033 stripped
 Transform:

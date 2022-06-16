@@ -69,12 +69,26 @@ public class TurretShop : MonoBehaviour {
 
     public void ClickTurretIcon(string turretName) {
 
-        // Unselects every other turret
-        if (turretName != "voyager") turretsClicked["voyager"] = false;
-        if (turretName != "tesla") turretsClicked["tesla"] = false;
-        if (turretName != "money") turretsClicked["money"] = false;
-        if (turretName != "minigun") turretsClicked["minigun"] = false;
-        if (turretName != "missile") turretsClicked["missile"] = false;
+        // Unselects every other turret button
+        foreach (string turret in turretButtons.Keys) {
+
+            if (turretName != turret) {
+                
+                turretsClicked[turret] = false;
+
+                var buttonColors = turretButtons[turret].GetComponent<Button>().colors;
+
+                buttonColors.normalColor = turretNotPressedColor;
+                buttonColors.highlightedColor = turretNotPressedColor;
+                buttonColors.pressedColor = turretNotPressedColor;
+                buttonColors.selectedColor = turretNotPressedColor;
+                buttonColors.disabledColor = turretNotPressedColor;
+
+                turretButtons[turret].GetComponent<Button>().colors = buttonColors;
+
+            }
+
+        }
 
         var colors = turretButtons[turretName].GetComponent<Button>().colors;
 
@@ -88,8 +102,6 @@ public class TurretShop : MonoBehaviour {
 
             turretsClicked[turretName] = false;
 
-            Debug.LogError(turretName + " unselected");
-
         } else {
 
             colors.normalColor = turretPressedColor;
@@ -99,8 +111,6 @@ public class TurretShop : MonoBehaviour {
             colors.disabledColor = turretPressedColor;
 
             turretsClicked[turretName] = true;
-
-            Debug.LogError(turretName + " selected");
 
         }
 
@@ -137,6 +147,8 @@ public class TurretShop : MonoBehaviour {
         var turretInstance = Instantiate(turretPrefabs[turretName], tile);
 
         turretInstance.transform.position = new Vector3(tile.position.x, turretInstance.transform.position.y, tile.position.z);
+
+        turretInstance.GetComponent<TowerHealth>().tile = tile.GetComponent<Tile>();
 
         GameManager.money -= turretPrices[turretName];
 

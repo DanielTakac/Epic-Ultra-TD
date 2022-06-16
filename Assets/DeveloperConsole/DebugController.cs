@@ -381,16 +381,29 @@ public class DebugController : MonoBehaviour {
 
             var turretShop = FindObjectOfType<TurretShop>();
 
-            turretShop.turretsClicked["tesla"] = true;
+            turretShop.turretsClicked["voyager"] = true;
+
+            foreach (Transform child in GameObject.FindGameObjectWithTag("TileParent").transform)
+                turretShop.SpawnTurret(child);
+            
+            turretShop.turretsClicked["voyager"] = false;
+
+        });
+
+        SPAWN_MONEY = new DebugCommand("spawn money", "Spawns money turrets on every tile", "spawn money", () => {
+
+            var turretShop = FindObjectOfType<TurretShop>();
+
+            turretShop.turretsClicked["money"] = true;
 
             foreach (Transform child in GameObject.FindGameObjectWithTag("TileParent").transform)
                 turretShop.SpawnTurret(child);
 
-            turretShop.turretsClicked["tesla"] = false;
+            turretShop.turretsClicked["money"] = false;
 
         });
 
-        SPAWN_MONEY = new DebugCommand("spawn voyager", "Spawns voyager turrets on every tile", "spawn voyager", () => {
+        SPAWN_TESLA = new DebugCommand("spawn tesla", "Spawns tesla turrets on every tile", "spawn tesla", () => {
 
             var turretShop = FindObjectOfType<TurretShop>();
 
@@ -403,42 +416,29 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SPAWN_TESLA = new DebugCommand("spawn voyager", "Spawns voyager turrets on every tile", "spawn voyager", () => {
+        SPAWN_MISSILE = new DebugCommand("spawn missile", "Spawns missile turrets on every tile", "spawn missile", () => {
 
             var turretShop = FindObjectOfType<TurretShop>();
 
-            turretShop.turretsClicked["tesla"] = true;
+            turretShop.turretsClicked["missile"] = true;
 
             foreach (Transform child in GameObject.FindGameObjectWithTag("TileParent").transform)
                 turretShop.SpawnTurret(child);
 
-            turretShop.turretsClicked["tesla"] = false;
+            turretShop.turretsClicked["missile"] = false;
 
         });
 
-        SPAWN_MISSILE = new DebugCommand("spawn voyager", "Spawns voyager turrets on every tile", "spawn voyager", () => {
+        SPAWN_MINIGUN = new DebugCommand("spawn minigun", "Spawns minigun turrets on every tile", "spawn minigun", () => {
 
             var turretShop = FindObjectOfType<TurretShop>();
 
-            turretShop.turretsClicked["tesla"] = true;
+            turretShop.turretsClicked["minigun"] = true;
 
             foreach (Transform child in GameObject.FindGameObjectWithTag("TileParent").transform)
                 turretShop.SpawnTurret(child);
 
-            turretShop.turretsClicked["tesla"] = false;
-
-        });
-
-        SPAWN_MINIGUN = new DebugCommand("spawn voyager", "Spawns voyager turrets on every tile", "spawn voyager", () => {
-
-            var turretShop = FindObjectOfType<TurretShop>();
-
-            turretShop.turretsClicked["tesla"] = true;
-
-            foreach (Transform child in GameObject.FindGameObjectWithTag("TileParent").transform)
-                turretShop.SpawnTurret(child);
-
-            turretShop.turretsClicked["tesla"] = false;
+            turretShop.turretsClicked["minigun"] = false;
 
         });
 
