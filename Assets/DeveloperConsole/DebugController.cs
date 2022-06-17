@@ -20,12 +20,7 @@ public class DebugController : MonoBehaviour {
     public static DebugCommand RESTART;
     public static DebugCommand PAUSE;
     public static DebugCommand RESUME;
-    public static DebugCommand SHIELD_ENEMIES;
-    public static DebugCommand SHIELD_TURRETS;
     public static DebugCommand SHIELD;
-    public static DebugCommand BREAK_SHIELD_ENEMIES;
-    public static DebugCommand BREAK_SHIELD_TURRETS;
-    public static DebugCommand BREAK_SHIELD_ALL;
     public static DebugCommand FPS_ENABLE;
     public static DebugCommand FPS_DISABLE;
     public static DebugCommand GET_BOOST;
@@ -159,95 +154,45 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SHIELD_ENEMIES = new DebugCommand("shield enemies", "Makes the enemies invincible", "shield enemies", (string[] parameters) => {
-
-            Debug.Log("SHIELD_ENEMIES");
-
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Ghoul");
-
-            for (int i = 0; i < enemies.Length; i++){
-
-                enemies[i].GetComponent<Ghoul>().GetShield();
-
-            }
-
-        });
-
-        SHIELD_TURRETS = new DebugCommand("shield turrets", "Makes the turrets invincible", "shield turrets", (string[] parameters) => {
-
-            Debug.Log("SHIELD_TURRETS");
-
-            GameObject[] turrets = GameObject.FindGameObjectsWithTag("Tower");
-
-            for (int i = 0; i < turrets.Length; i++){
-
-                turrets[i].GetComponent<TowerHealth>().GetShield();
-
-            }
-
-        });
-
         SHIELD = new DebugCommand("shield", "Makes objects invincible - 2 parameters: string object name(turrets, enemies), bool enable or diable", "shield", (string[] parameters) => {
 
             if (parameters.Length < 2 && parameters[0] == string.Empty) return;
-            if (!(parameters[0] is "turrets" or "enemies")) return;
+            if (!(parameters[0] is "turrets" or "enemies" or "all")) return;
             if (!(parameters[1] is "enable" or "disable" or "true" or "false")) return;
 
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Ghoul");
+            if (parameters[0] is "turrets" or "all") {
 
-            for (int i = 0; i < enemies.Length; i++) enemies[i].GetComponent<Ghoul>().GetShield();
+                GameObject[] turrets = GameObject.FindGameObjectsWithTag("Tower");
 
-            GameObject[] turrets = GameObject.FindGameObjectsWithTag("Tower");
+                if (parameters[1] is "enable" or "true") {
+                    
+                    for (int i = 0; i < turrets.Length; i++)
+                        turrets[i].GetComponent<TowerHealth>().GetShield();
 
-            for (int i = 0; i < turrets.Length; i++) turrets[i].GetComponent<TowerHealth>().GetShield();
+                } else if (parameters[1] is "disable" or "false") {
 
-        });
+                    for (int i = 0; i < turrets.Length; i++)
+                        turrets[i].GetComponent<TowerHealth>().BreakShield();
 
-        BREAK_SHIELD_ENEMIES = new DebugCommand("break shield enemies", "Makes the enemies damagable", "break shield enemies", (string[] parameters) => {
-
-            Debug.Log("BREAK_SHIELD_ENEMIES");
-
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Ghoul");
-
-            for (int i = 0; i < enemies.Length; i++){
-
-                enemies[i].GetComponent<Ghoul>().BreakShield();
+                }
 
             }
+            
+            if (parameters[1] is "enemies" or "all") {
 
-        });
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Ghoul");
 
-        BREAK_SHIELD_TURRETS = new DebugCommand("break shield turrets", "Makes the turrets damagable", "break shield turrets", (string[] parameters) => {
+                if (parameters[1] is "enable" or "true") {
 
-            Debug.Log("BREAK_SHIELD_TURRETS");
+                    for (int i = 0; i < enemies.Length; i++)
+                        enemies[i].GetComponent<Ghoul>().GetShield();
 
-            GameObject[] turrets = GameObject.FindGameObjectsWithTag("Tower");
+                } else if (parameters[1] is "disable" or "false") {
 
-            for (int i = 0; i < turrets.Length; i++){
+                    for (int i = 0; i < enemies.Length; i++)
+                        enemies[i].GetComponent<Ghoul>().GetShield();
 
-                turrets[i].GetComponent<TowerHealth>().BreakShield();
-
-            }
-
-        });
-
-        BREAK_SHIELD_ALL = new DebugCommand("break shield all", "Makes all objects damagable", "break shield all", (string[] parameters) => {
-
-            Debug.Log("BREAK_SHIELD_ALL");
-
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Ghoul");
-
-            for (int i = 0; i < enemies.Length; i++){
-
-                enemies[i].GetComponent<Ghoul>().BreakShield();
-
-            }
-
-            GameObject[] turrets = GameObject.FindGameObjectsWithTag("Tower");
-
-            for (int i = 0; i < turrets.Length; i++){
-
-                turrets[i].GetComponent<TowerHealth>().BreakShield();
+                }
 
             }
 
@@ -427,12 +372,7 @@ public class DebugController : MonoBehaviour {
             RESTART,
             PAUSE,
             RESUME,
-            SHIELD_ENEMIES,
-            SHIELD_TURRETS,
             SHIELD,
-            BREAK_SHIELD_ENEMIES,
-            BREAK_SHIELD_TURRETS,
-            BREAK_SHIELD_ALL,
             FPS_ENABLE,
             FPS_DISABLE,
             GET_BOOST,
