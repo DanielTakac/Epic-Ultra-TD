@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TurretShop : MonoBehaviour {
 
-    [SerializeField] private Transform test;
-
     // I had to create a serialized array and put the values from it to the dictionary because unity is retarded and can't serialize a dictionary
     [SerializeField] private GameObject[] turretInfosArray;
     [SerializeField] private GameObject[] turretButtonsArray;

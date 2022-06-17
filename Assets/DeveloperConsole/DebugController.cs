@@ -14,8 +14,6 @@ public class DebugController : MonoBehaviour {
 
     public static DebugCommand KILL_ALL;
     public static DebugCommand DESTROY_TURRETS;
-    public static DebugCommand SPAWN_ENEMY;
-    public static DebugCommand SPAWN_COIN;
     public static DebugCommand END_GAME;
     public static DebugCommand GET_MONEY;
     public static DebugCommand QUIT_APP;
@@ -24,22 +22,18 @@ public class DebugController : MonoBehaviour {
     public static DebugCommand RESUME;
     public static DebugCommand SHIELD_ENEMIES;
     public static DebugCommand SHIELD_TURRETS;
-    public static DebugCommand SHIELD_ALL;
+    public static DebugCommand SHIELD;
     public static DebugCommand BREAK_SHIELD_ENEMIES;
     public static DebugCommand BREAK_SHIELD_TURRETS;
     public static DebugCommand BREAK_SHIELD_ALL;
     public static DebugCommand FPS_ENABLE;
     public static DebugCommand FPS_DISABLE;
     public static DebugCommand GET_BOOST;
-    public static DebugCommand LOSE_BOOST;
+    public static DebugCommand REMOVE_BOOST;
     public static DebugCommand BOOST;
     public static DebugCommand RESET_LEVEL_PROGRESS;
     public static DebugCommand FINISH_ALL_LEVELS;
-    public static DebugCommand SPAWN_VOYAGER;
-    public static DebugCommand SPAWN_MONEY;
-    public static DebugCommand SPAWN_TESLA;
     public static DebugCommand SPAWN;
-    public static DebugCommand SPAWN_MINIGUN;
     public static DebugCommand HELP;
 
     public List<object> commandList;
@@ -95,25 +89,11 @@ public class DebugController : MonoBehaviour {
 
             for (int i = 0; i < turrets.Length; i++){
 
+                turrets[i].GetComponent<TowerHealth>().tile.hasTower = false;
+
                 Destroy(turrets[i]);
 
             }
-
-        });
-
-        SPAWN_ENEMY = new DebugCommand("spawn enemy", "Spawns an enemy", "spawn enemy", (string[] parameters) => {
-
-            Debug.Log("SPAWN_ENEMY");
-
-            GameObject.FindGameObjectWithTag("Spawners").GetComponent<Spawner>().SpawnEnemy(Random.Range(1, 6));
-
-        });
-
-        SPAWN_COIN = new DebugCommand("spawn coin", "Spawns a coin", "spawn coin", (string[] parameters) => {
-
-            Debug.Log("SPAWN_COIN");
-
-            GameObject.FindGameObjectWithTag("TurretShop").GetComponent<SunSpawner>().SpawnCoin();
 
         });
 
@@ -207,25 +187,19 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SHIELD_ALL = new DebugCommand("shield all", "Makes all objects invincible", "shield all", (string[] parameters) => {
+        SHIELD = new DebugCommand("shield", "Makes objects invincible - 2 parameters: string object name(turrets, enemies), bool enable or diable", "shield", (string[] parameters) => {
 
-            Debug.Log("SHIELD_ALL");
+            if (parameters.Length < 2 && parameters[0] == string.Empty) return;
+            if (!(parameters[0] is "turrets" or "enemies")) return;
+            if (!(parameters[1] is "enable" or "disable" or "true" or "false")) return;
 
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Ghoul");
 
-            for (int i = 0; i < enemies.Length; i++){
-
-                enemies[i].GetComponent<Ghoul>().GetShield();
-
-            }
+            for (int i = 0; i < enemies.Length; i++) enemies[i].GetComponent<Ghoul>().GetShield();
 
             GameObject[] turrets = GameObject.FindGameObjectsWithTag("Tower");
 
-            for (int i = 0; i < turrets.Length; i++){
-
-                turrets[i].GetComponent<TowerHealth>().GetShield();
-
-            }
+            for (int i = 0; i < turrets.Length; i++) turrets[i].GetComponent<TowerHealth>().GetShield();
 
         });
 
@@ -295,17 +269,21 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        GET_BOOST = new DebugCommand("get boost", "Gives the player infinite boosts", "get boost", (string[] parameters) => {
+        GET_BOOST = new DebugCommand("get boost", "Gives the player boosts - 1 parameter: int amount", "get boost", (string[] parameters) => {
+
+            int amount = 10000;
+
+            if (parameters.Length == 1 && parameters[0] != string.Empty) int.TryParse(parameters[0], out amount);
 
             Debug.Log("GET_BOOST");
 
-            BoostShop.boosts = 10000;
+            BoostShop.boosts = amount;
 
-            PlayerPrefs.SetInt("boost", 10000);
+            PlayerPrefs.SetInt("boost", amount);
 
         });
 
-        LOSE_BOOST = new DebugCommand("lose boost", "Sets the boosts to 0", "lose boost", (string[] parameters) => {
+        REMOVE_BOOST = new DebugCommand("remove boost", "Sets the boosts to 0", "remove boost", (string[] parameters) => {
 
             Debug.Log("LOSE_BOOST");
 
@@ -315,7 +293,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        BOOST = new DebugCommand("boost", "Boosts all towers", "boost", (string[] parameters) => {
+        BOOST = new DebugCommand("boost all", "Boosts all towers", "boost all", (string[] parameters) => {
 
             Debug.Log("BOOST");
 
@@ -379,8 +357,13 @@ public class DebugController : MonoBehaviour {
 
         SPAWN = new DebugCommand("spawn", "Spawns an object - 2 parameter: string object name (voyager, money, tesla, missile, minigun, enemy, coin), int amount of objects to spawn", "spawn", (string[] parameters) => {
 
+            int amount = 1;
+
+            if (parameters.Length == 0) return;
+            if (parameters.Length > 2) return;
+
             // Returns if the second parameter isn't a number
-            if (!int.TryParse(parameters[1], out int amount)) return;
+            if (parameters.Length == 2 && !int.TryParse(parameters[1], out amount)) return;
 
             bool parameterIsTurret = false;
 
@@ -390,11 +373,19 @@ public class DebugController : MonoBehaviour {
 
             if (parameters[0] == "enemy") {
 
+                for (int i = 0; i <= amount; i++) {
 
+                    GameObject.FindGameObjectWithTag("Spawners").GetComponent<Spawner>().SpawnEnemy(Random.Range(1, 6));
+
+                }
 
             } else if (parameters[0] == "coin") {
 
+                for (int i = 0; i <= amount; i++) {
 
+                    GameObject.FindGameObjectWithTag("TurretShop").GetComponent<SunSpawner>().SpawnCoin();
+
+                }
 
             } else if (parameterIsTurret) {
 
@@ -406,9 +397,11 @@ public class DebugController : MonoBehaviour {
 
                     if (amount <= 0) break;
 
+                    bool alreadyHasTower = child.GetComponent<Tile>().hasTower;
+
                     turretShop.SpawnTurret(child);
 
-                    amount--;
+                    if (!alreadyHasTower) amount--;
 
                 }
 
@@ -428,8 +421,6 @@ public class DebugController : MonoBehaviour {
 
             KILL_ALL,
             DESTROY_TURRETS,
-            SPAWN_ENEMY,
-            SPAWN_COIN,
             END_GAME,
             GET_MONEY,
             QUIT_APP,
@@ -438,22 +429,18 @@ public class DebugController : MonoBehaviour {
             RESUME,
             SHIELD_ENEMIES,
             SHIELD_TURRETS,
-            SHIELD_ALL,
+            SHIELD,
             BREAK_SHIELD_ENEMIES,
             BREAK_SHIELD_TURRETS,
             BREAK_SHIELD_ALL,
             FPS_ENABLE,
             FPS_DISABLE,
             GET_BOOST,
-            LOSE_BOOST,
+            REMOVE_BOOST,
             BOOST,
             RESET_LEVEL_PROGRESS,
             FINISH_ALL_LEVELS,
-            SPAWN_VOYAGER,
-            SPAWN_MONEY,
-            SPAWN_TESLA,
             SPAWN,
-            SPAWN_MINIGUN,
             HELP
 
         };
@@ -518,7 +505,6 @@ public class DebugController : MonoBehaviour {
                     string substring = input.Remove(startPos, endPos).Trim();
 
                     string[] arguments = substring.Split();
-
 
                     (commandList[i] as DebugCommand).Invoke(arguments);
 
