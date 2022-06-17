@@ -13,7 +13,7 @@ public class TurretShop : MonoBehaviour {
 
     private Dictionary<string, GameObject> turretInfos = new Dictionary<string, GameObject>();
     private Dictionary<string, GameObject> turretButtons = new Dictionary<string, GameObject>();
-    private Dictionary<string, GameObject> turretPrefabs = new Dictionary<string, GameObject>();
+    public Dictionary<string, GameObject> turretPrefabs = new Dictionary<string, GameObject>();
 
     public Dictionary<string, bool> turretsClicked = new Dictionary<string, bool> {
         { "voyager", false },

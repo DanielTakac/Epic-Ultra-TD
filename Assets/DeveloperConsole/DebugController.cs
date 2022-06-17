@@ -73,7 +73,7 @@ public class DebugController : MonoBehaviour {
 
     private void Awake() {
 
-        KILL_ALL = new DebugCommand("kill all", "Removes all enemies", "kill all", (string parameter) => {
+        KILL_ALL = new DebugCommand("kill all", "Removes all enemies", "kill all", (string[] parameters) => {
 
             Debug.Log("KILL_ALL");
 
@@ -87,7 +87,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        DESTROY_TURRETS = new DebugCommand("destroy turrets", "Removes all turrets", "destroy turrets", (string parameter) => {
+        DESTROY_TURRETS = new DebugCommand("destroy turrets", "Removes all turrets", "destroy turrets", (string[] parameters) => {
 
             Debug.Log("DESTROY_TURRETS");
 
@@ -101,7 +101,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SPAWN_ENEMY = new DebugCommand("spawn enemy", "Spawns an enemy", "spawn enemy", (string parameter) => {
+        SPAWN_ENEMY = new DebugCommand("spawn enemy", "Spawns an enemy", "spawn enemy", (string[] parameters) => {
 
             Debug.Log("SPAWN_ENEMY");
 
@@ -109,7 +109,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SPAWN_COIN = new DebugCommand("spawn coin", "Spawns a coin", "spawn coin", (string parameter) => {
+        SPAWN_COIN = new DebugCommand("spawn coin", "Spawns a coin", "spawn coin", (string[] parameters) => {
 
             Debug.Log("SPAWN_COIN");
 
@@ -117,7 +117,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        END_GAME = new DebugCommand("end game", "Game Over", "end game", (string parameter) => {
+        END_GAME = new DebugCommand("end game", "Game Over", "end game", (string[] parameters) => {
 
             Debug.Log("END_GAME");
 
@@ -125,7 +125,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        GET_MONEY = new DebugCommand("get money", "Gives the player money", "get money", (string parameter) => {
+        GET_MONEY = new DebugCommand("get money", "Gives the player money", "get money", (string[] parameters) => {
 
             Debug.Log("GET_MONEY");
 
@@ -133,7 +133,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        QUIT_APP = new DebugCommand("quit app", "Closes the application", "quit app", (string parameter) => {
+        QUIT_APP = new DebugCommand("quit app", "Closes the application", "quit app", (string[] parameters) => {
 
             Debug.Log("QUIT_APP");
 
@@ -141,7 +141,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        RESTART = new DebugCommand("restart", "Reopens the current scene", "restart", (string parameter) => {
+        RESTART = new DebugCommand("restart", "Reopens the current scene", "restart", (string[] parameters) => {
 
             Debug.Log("RESTART");
 
@@ -149,7 +149,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        PAUSE = new DebugCommand("pause", "Disables the enemy movement", "pause", (string parameter) => {
+        PAUSE = new DebugCommand("pause", "Disables the enemy movement", "pause", (string[] parameters) => {
 
             Debug.Log("PAUSE");
 
@@ -164,7 +164,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        RESUME = new DebugCommand("resume", "Enables the enemy movement", "resume", (string parameter) => {
+        RESUME = new DebugCommand("resume", "Enables the enemy movement", "resume", (string[] parameters) => {
 
             Debug.Log("RESUME");
 
@@ -179,7 +179,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SHIELD_ENEMIES = new DebugCommand("shield enemies", "Makes the enemies invincible", "shield enemies", (string parameter) => {
+        SHIELD_ENEMIES = new DebugCommand("shield enemies", "Makes the enemies invincible", "shield enemies", (string[] parameters) => {
 
             Debug.Log("SHIELD_ENEMIES");
 
@@ -193,7 +193,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SHIELD_TURRETS = new DebugCommand("shield turrets", "Makes the turrets invincible", "shield turrets", (string parameter) => {
+        SHIELD_TURRETS = new DebugCommand("shield turrets", "Makes the turrets invincible", "shield turrets", (string[] parameters) => {
 
             Debug.Log("SHIELD_TURRETS");
 
@@ -207,7 +207,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SHIELD_ALL = new DebugCommand("shield all", "Makes all objects invincible", "shield all", (string parameter) => {
+        SHIELD_ALL = new DebugCommand("shield all", "Makes all objects invincible", "shield all", (string[] parameters) => {
 
             Debug.Log("SHIELD_ALL");
 
@@ -229,7 +229,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        BREAK_SHIELD_ENEMIES = new DebugCommand("break shield enemies", "Makes the enemies damagable", "break shield enemies", (string parameter) => {
+        BREAK_SHIELD_ENEMIES = new DebugCommand("break shield enemies", "Makes the enemies damagable", "break shield enemies", (string[] parameters) => {
 
             Debug.Log("BREAK_SHIELD_ENEMIES");
 
@@ -243,7 +243,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        BREAK_SHIELD_TURRETS = new DebugCommand("break shield turrets", "Makes the turrets damagable", "break shield turrets", (string parameter) => {
+        BREAK_SHIELD_TURRETS = new DebugCommand("break shield turrets", "Makes the turrets damagable", "break shield turrets", (string[] parameters) => {
 
             Debug.Log("BREAK_SHIELD_TURRETS");
 
@@ -257,7 +257,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        BREAK_SHIELD_ALL = new DebugCommand("break shield all", "Makes all objects damagable", "break shield all", (string parameter) => {
+        BREAK_SHIELD_ALL = new DebugCommand("break shield all", "Makes all objects damagable", "break shield all", (string[] parameters) => {
 
             Debug.Log("BREAK_SHIELD_ALL");
 
@@ -279,7 +279,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        FPS_ENABLE = new DebugCommand("fps enable", "Enables the FPS counter", "fps enable", (string parameter) => {
+        FPS_ENABLE = new DebugCommand("fps enable", "Enables the FPS counter", "fps enable", (string[] parameters) => {
 
             Debug.Log("FPS_ENABLE");
 
@@ -287,7 +287,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        FPS_DISABLE = new DebugCommand("fps disable", "Disables the FPS counter", "fps disable", (string parameter) => {
+        FPS_DISABLE = new DebugCommand("fps disable", "Disables the FPS counter", "fps disable", (string[] parameters) => {
 
             Debug.Log("FPS_DISABLE");
 
@@ -295,7 +295,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        GET_BOOST = new DebugCommand("get boost", "Gives the player infinite boosts", "get boost", (string parameter) => {
+        GET_BOOST = new DebugCommand("get boost", "Gives the player infinite boosts", "get boost", (string[] parameters) => {
 
             Debug.Log("GET_BOOST");
 
@@ -305,7 +305,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        LOSE_BOOST = new DebugCommand("lose boost", "Sets the boosts to 0", "lose boost", (string parameter) => {
+        LOSE_BOOST = new DebugCommand("lose boost", "Sets the boosts to 0", "lose boost", (string[] parameters) => {
 
             Debug.Log("LOSE_BOOST");
 
@@ -315,7 +315,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        BOOST = new DebugCommand("boost", "Boosts all towers", "boost", (string parameter) => {
+        BOOST = new DebugCommand("boost", "Boosts all towers", "boost", (string[] parameters) => {
 
             Debug.Log("BOOST");
 
@@ -361,7 +361,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        RESET_LEVEL_PROGRESS = new DebugCommand("reset level progress", "Resets all finished levels", "reset level progress", (string parameter) => {
+        RESET_LEVEL_PROGRESS = new DebugCommand("reset level progress", "Resets all finished levels", "reset level progress", (string[] parameters) => {
 
             Debug.Log("RESET_LEVEL_PROGRESS");
 
@@ -369,7 +369,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        FINISH_ALL_LEVELS = new DebugCommand("finish all levels", "Finishes all levels", "finish all levels", (string parameter) => {
+        FINISH_ALL_LEVELS = new DebugCommand("finish all levels", "Finishes all levels", "finish all levels", (string[] parameters) => {
 
             Debug.Log("FINISH_ALL_LEVELS");
 
@@ -377,74 +377,48 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SPAWN_VOYAGER = new DebugCommand("spawn voyager", "Spawns voyager turrets on every tile", "spawn voyager", (string parameter) => {
+        SPAWN = new DebugCommand("spawn", "Spawns an object - 2 parameter: string object name (voyager, money, tesla, missile, minigun, enemy, coin), int amount of objects to spawn", "spawn", (string[] parameters) => {
 
-            var turretShop = FindObjectOfType<TurretShop>();
+            // Returns if the second parameter isn't a number
+            if (!int.TryParse(parameters[1], out int amount)) return;
 
-            turretShop.turretsClicked["voyager"] = true;
+            bool parameterIsTurret = false;
 
-            foreach (Transform child in GameObject.FindGameObjectWithTag("TileParent").transform)
-                turretShop.SpawnTurret(child);
-            
-            turretShop.turretsClicked["voyager"] = false;
+            foreach (string turretName in GameObject.FindObjectOfType<TurretShop>().turretPrefabs.Keys)
+                if (parameters[0] == turretName)
+                    parameterIsTurret = true;
 
-        });
+            if (parameters[0] == "enemy") {
 
-        SPAWN_MONEY = new DebugCommand("spawn money", "Spawns money turrets on every tile", "spawn money", (string parameter) => {
 
-            var turretShop = FindObjectOfType<TurretShop>();
 
-            turretShop.turretsClicked["money"] = true;
+            } else if (parameters[0] == "coin") {
 
-            foreach (Transform child in GameObject.FindGameObjectWithTag("TileParent").transform)
-                turretShop.SpawnTurret(child);
 
-            turretShop.turretsClicked["money"] = false;
 
-        });
+            } else if (parameterIsTurret) {
 
-        SPAWN_TESLA = new DebugCommand("spawn tesla", "Spawns tesla turrets on every tile", "spawn tesla", (string parameter) => {
+                var turretShop = FindObjectOfType<TurretShop>();
 
-            var turretShop = FindObjectOfType<TurretShop>();
+                turretShop.turretsClicked[parameters[0]] = true;
 
-            turretShop.turretsClicked["tesla"] = true;
+                foreach (Transform child in GameObject.FindGameObjectWithTag("TileParent").transform) {
 
-            foreach (Transform child in GameObject.FindGameObjectWithTag("TileParent").transform)
-                turretShop.SpawnTurret(child);
+                    if (amount <= 0) break;
 
-            turretShop.turretsClicked["tesla"] = false;
+                    turretShop.SpawnTurret(child);
 
-        });
+                    amount--;
 
-        SPAWN = new DebugCommand("spawn", "Spawns an object - 1 parameter: object name (voyager, money, tesla, missile, minigun, enemy, coin)", "spawn", (string parameter) => {
+                }
 
-            Debug.LogError(parameter);
+                turretShop.turretsClicked[parameters[0]] = false;
 
-            var turretShop = FindObjectOfType<TurretShop>();
-
-            turretShop.turretsClicked["missile"] = true;
-
-            foreach (Transform child in GameObject.FindGameObjectWithTag("TileParent").transform)
-                turretShop.SpawnTurret(child);
-
-            turretShop.turretsClicked["missile"] = false;
+            }
 
         });
 
-        SPAWN_MINIGUN = new DebugCommand("spawn minigun", "Spawns minigun turrets on every tile", "spawn minigun", (string parameter) => {
-
-            var turretShop = FindObjectOfType<TurretShop>();
-
-            turretShop.turretsClicked["minigun"] = true;
-
-            foreach (Transform child in GameObject.FindGameObjectWithTag("TileParent").transform)
-                turretShop.SpawnTurret(child);
-
-            turretShop.turretsClicked["minigun"] = false;
-
-        });
-
-        HELP = new DebugCommand("help", "Shows a list of commands", "help", (string parameter) => {
+        HELP = new DebugCommand("help", "Shows a list of commands", "help", (string[] parameters) => {
 
             showHelp = true;
 
@@ -541,9 +515,12 @@ public class DebugController : MonoBehaviour {
                     int startPos = input.IndexOf((commandList[i] as DebugCommand).commandId);
                     int endPos = startPos + (commandList[i] as DebugCommand).commandId.Length;
 
-                    string argument = input.Remove(startPos, endPos).Trim(' ');
+                    string substring = input.Remove(startPos, endPos).Trim();
 
-                    (commandList[i] as DebugCommand).Invoke(argument);
+                    string[] arguments = substring.Split();
+
+
+                    (commandList[i] as DebugCommand).Invoke(arguments);
 
                 }
 
