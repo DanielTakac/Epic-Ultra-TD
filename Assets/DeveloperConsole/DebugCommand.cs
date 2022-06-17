@@ -25,17 +25,17 @@ public class DebugCommandBase{
 
 public class DebugCommand : DebugCommandBase{
 
-    private System.Action command;
+    private System.Action<string> command;
 
-    public DebugCommand(string id, string description, string format, System.Action command) : base(id, description, format){
+    public DebugCommand(string id, string description, string format, System.Action<string> command) : base(id, description, format){
 
         this.command = command;
 
     }
 
-    public void Invoke(){
+    public void Invoke(string parameter = ""){
 
-        command.Invoke();
+        command.Invoke(parameter);
 
     }
 

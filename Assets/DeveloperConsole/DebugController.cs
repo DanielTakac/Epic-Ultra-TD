@@ -38,7 +38,7 @@ public class DebugController : MonoBehaviour {
     public static DebugCommand SPAWN_VOYAGER;
     public static DebugCommand SPAWN_MONEY;
     public static DebugCommand SPAWN_TESLA;
-    public static DebugCommand SPAWN_MISSILE;
+    public static DebugCommand SPAWN;
     public static DebugCommand SPAWN_MINIGUN;
     public static DebugCommand HELP;
 
@@ -73,7 +73,7 @@ public class DebugController : MonoBehaviour {
 
     private void Awake() {
 
-        KILL_ALL = new DebugCommand("kill all", "Removes all enemies", "kill all", () => {
+        KILL_ALL = new DebugCommand("kill all", "Removes all enemies", "kill all", (string parameter) => {
 
             Debug.Log("KILL_ALL");
 
@@ -87,7 +87,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        DESTROY_TURRETS = new DebugCommand("destroy turrets", "Removes all turrets", "destroy turrets", () => {
+        DESTROY_TURRETS = new DebugCommand("destroy turrets", "Removes all turrets", "destroy turrets", (string parameter) => {
 
             Debug.Log("DESTROY_TURRETS");
 
@@ -101,7 +101,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SPAWN_ENEMY = new DebugCommand("spawn enemy", "Spawns an enemy", "spawn enemy", () => {
+        SPAWN_ENEMY = new DebugCommand("spawn enemy", "Spawns an enemy", "spawn enemy", (string parameter) => {
 
             Debug.Log("SPAWN_ENEMY");
 
@@ -109,7 +109,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SPAWN_COIN = new DebugCommand("spawn coin", "Spawns a coin", "spawn coin", () => {
+        SPAWN_COIN = new DebugCommand("spawn coin", "Spawns a coin", "spawn coin", (string parameter) => {
 
             Debug.Log("SPAWN_COIN");
 
@@ -117,7 +117,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        END_GAME = new DebugCommand("end game", "Game Over", "end game", () => {
+        END_GAME = new DebugCommand("end game", "Game Over", "end game", (string parameter) => {
 
             Debug.Log("END_GAME");
 
@@ -125,7 +125,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        GET_MONEY = new DebugCommand("get money", "Gives the player money", "get money", () => {
+        GET_MONEY = new DebugCommand("get money", "Gives the player money", "get money", (string parameter) => {
 
             Debug.Log("GET_MONEY");
 
@@ -133,7 +133,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        QUIT_APP = new DebugCommand("quit app", "Closes the application", "quit app", () => {
+        QUIT_APP = new DebugCommand("quit app", "Closes the application", "quit app", (string parameter) => {
 
             Debug.Log("QUIT_APP");
 
@@ -141,7 +141,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        RESTART = new DebugCommand("restart", "Reopens the current scene", "restart", () => {
+        RESTART = new DebugCommand("restart", "Reopens the current scene", "restart", (string parameter) => {
 
             Debug.Log("RESTART");
 
@@ -149,7 +149,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        PAUSE = new DebugCommand("pause", "Disables the enemy movement", "pause", () => {
+        PAUSE = new DebugCommand("pause", "Disables the enemy movement", "pause", (string parameter) => {
 
             Debug.Log("PAUSE");
 
@@ -164,7 +164,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        RESUME = new DebugCommand("resume", "Enables the enemy movement", "resume", () => {
+        RESUME = new DebugCommand("resume", "Enables the enemy movement", "resume", (string parameter) => {
 
             Debug.Log("RESUME");
 
@@ -179,7 +179,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SHIELD_ENEMIES = new DebugCommand("shield enemies", "Makes the enemies invincible", "shield enemies", () => {
+        SHIELD_ENEMIES = new DebugCommand("shield enemies", "Makes the enemies invincible", "shield enemies", (string parameter) => {
 
             Debug.Log("SHIELD_ENEMIES");
 
@@ -193,7 +193,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SHIELD_TURRETS = new DebugCommand("shield turrets", "Makes the turrets invincible", "shield turrets", () => {
+        SHIELD_TURRETS = new DebugCommand("shield turrets", "Makes the turrets invincible", "shield turrets", (string parameter) => {
 
             Debug.Log("SHIELD_TURRETS");
 
@@ -207,7 +207,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SHIELD_ALL = new DebugCommand("shield all", "Makes all objects invincible", "shield all", () => {
+        SHIELD_ALL = new DebugCommand("shield all", "Makes all objects invincible", "shield all", (string parameter) => {
 
             Debug.Log("SHIELD_ALL");
 
@@ -229,7 +229,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        BREAK_SHIELD_ENEMIES = new DebugCommand("break shield enemies", "Makes the enemies damagable", "break shield enemies", () => {
+        BREAK_SHIELD_ENEMIES = new DebugCommand("break shield enemies", "Makes the enemies damagable", "break shield enemies", (string parameter) => {
 
             Debug.Log("BREAK_SHIELD_ENEMIES");
 
@@ -243,7 +243,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        BREAK_SHIELD_TURRETS = new DebugCommand("break shield turrets", "Makes the turrets damagable", "break shield turrets", () => {
+        BREAK_SHIELD_TURRETS = new DebugCommand("break shield turrets", "Makes the turrets damagable", "break shield turrets", (string parameter) => {
 
             Debug.Log("BREAK_SHIELD_TURRETS");
 
@@ -257,7 +257,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        BREAK_SHIELD_ALL = new DebugCommand("break shield all", "Makes all objects damagable", "break shield all", () => {
+        BREAK_SHIELD_ALL = new DebugCommand("break shield all", "Makes all objects damagable", "break shield all", (string parameter) => {
 
             Debug.Log("BREAK_SHIELD_ALL");
 
@@ -279,7 +279,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        FPS_ENABLE = new DebugCommand("fps enable", "Enables the FPS counter", "fps enable", () => {
+        FPS_ENABLE = new DebugCommand("fps enable", "Enables the FPS counter", "fps enable", (string parameter) => {
 
             Debug.Log("FPS_ENABLE");
 
@@ -287,7 +287,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        FPS_DISABLE = new DebugCommand("fps disable", "Disables the FPS counter", "fps disable", () => {
+        FPS_DISABLE = new DebugCommand("fps disable", "Disables the FPS counter", "fps disable", (string parameter) => {
 
             Debug.Log("FPS_DISABLE");
 
@@ -295,7 +295,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        GET_BOOST = new DebugCommand("get boost", "Gives the player infinite boosts", "get boost", () => {
+        GET_BOOST = new DebugCommand("get boost", "Gives the player infinite boosts", "get boost", (string parameter) => {
 
             Debug.Log("GET_BOOST");
 
@@ -305,7 +305,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        LOSE_BOOST = new DebugCommand("lose boost", "Sets the boosts to 0", "lose boost", () => {
+        LOSE_BOOST = new DebugCommand("lose boost", "Sets the boosts to 0", "lose boost", (string parameter) => {
 
             Debug.Log("LOSE_BOOST");
 
@@ -315,7 +315,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        BOOST = new DebugCommand("boost", "Boosts all towers", "boost", () => {
+        BOOST = new DebugCommand("boost", "Boosts all towers", "boost", (string parameter) => {
 
             Debug.Log("BOOST");
 
@@ -323,9 +323,9 @@ public class DebugController : MonoBehaviour {
 
             VoyagerBoost[] voyager = FindObjectsOfType<VoyagerBoost>();
 
-            //TeslaBoost[] tesla = FindObjectsOfType<TeslaBoost>();
+            TeslaBoost[] tesla = FindObjectsOfType<TeslaBoost>();
 
-            //MinigunBoost[] minigun = FindObjectsOfType<MinigunBoost>();
+            MinigunBoost[] minigun = FindObjectsOfType<MinigunBoost>();
 
             MissileBoost[] missile = FindObjectsOfType<MissileBoost>();
 
@@ -341,7 +341,7 @@ public class DebugController : MonoBehaviour {
 
             }
 
-            /*for (int i = 0; i < tesla.Length; i++){
+            for (int i = 0; i < tesla.Length; i++){
 
                 tesla[i].Activate();
 
@@ -351,7 +351,7 @@ public class DebugController : MonoBehaviour {
 
                 minigun[i].Activate();
 
-            }*/
+            }
 
             for (int i = 0; i < missile.Length; i++){
 
@@ -361,7 +361,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        RESET_LEVEL_PROGRESS = new DebugCommand("reset level progress", "Resets all finished levels", "reset level progress", () => {
+        RESET_LEVEL_PROGRESS = new DebugCommand("reset level progress", "Resets all finished levels", "reset level progress", (string parameter) => {
 
             Debug.Log("RESET_LEVEL_PROGRESS");
 
@@ -369,7 +369,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        FINISH_ALL_LEVELS = new DebugCommand("finish all levels", "Finishes all levels", "finish all levels", () => {
+        FINISH_ALL_LEVELS = new DebugCommand("finish all levels", "Finishes all levels", "finish all levels", (string parameter) => {
 
             Debug.Log("FINISH_ALL_LEVELS");
 
@@ -377,7 +377,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SPAWN_VOYAGER = new DebugCommand("spawn voyager", "Spawns voyager turrets on every tile", "spawn voyager", () => {
+        SPAWN_VOYAGER = new DebugCommand("spawn voyager", "Spawns voyager turrets on every tile", "spawn voyager", (string parameter) => {
 
             var turretShop = FindObjectOfType<TurretShop>();
 
@@ -390,7 +390,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SPAWN_MONEY = new DebugCommand("spawn money", "Spawns money turrets on every tile", "spawn money", () => {
+        SPAWN_MONEY = new DebugCommand("spawn money", "Spawns money turrets on every tile", "spawn money", (string parameter) => {
 
             var turretShop = FindObjectOfType<TurretShop>();
 
@@ -403,7 +403,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SPAWN_TESLA = new DebugCommand("spawn tesla", "Spawns tesla turrets on every tile", "spawn tesla", () => {
+        SPAWN_TESLA = new DebugCommand("spawn tesla", "Spawns tesla turrets on every tile", "spawn tesla", (string parameter) => {
 
             var turretShop = FindObjectOfType<TurretShop>();
 
@@ -416,7 +416,9 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SPAWN_MISSILE = new DebugCommand("spawn missile", "Spawns missile turrets on every tile", "spawn missile", () => {
+        SPAWN = new DebugCommand("spawn", "Spawns an object - 1 parameter: object name (voyager, money, tesla, missile, minigun, enemy, coin)", "spawn", (string parameter) => {
+
+            Debug.LogError(parameter);
 
             var turretShop = FindObjectOfType<TurretShop>();
 
@@ -429,7 +431,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SPAWN_MINIGUN = new DebugCommand("spawn minigun", "Spawns minigun turrets on every tile", "spawn minigun", () => {
+        SPAWN_MINIGUN = new DebugCommand("spawn minigun", "Spawns minigun turrets on every tile", "spawn minigun", (string parameter) => {
 
             var turretShop = FindObjectOfType<TurretShop>();
 
@@ -442,7 +444,7 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        HELP = new DebugCommand("help", "Shows a list of commands", "help", () => {
+        HELP = new DebugCommand("help", "Shows a list of commands", "help", (string parameter) => {
 
             showHelp = true;
 
@@ -476,7 +478,7 @@ public class DebugController : MonoBehaviour {
             SPAWN_VOYAGER,
             SPAWN_MONEY,
             SPAWN_TESLA,
-            SPAWN_MISSILE,
+            SPAWN,
             SPAWN_MINIGUN,
             HELP
 
@@ -536,7 +538,12 @@ public class DebugController : MonoBehaviour {
 
                 if (commandList[i] as DebugCommand != null){
 
-                    (commandList[i] as DebugCommand).Invoke();
+                    int startPos = input.IndexOf((commandList[i] as DebugCommand).commandId);
+                    int endPos = startPos + (commandList[i] as DebugCommand).commandId.Length;
+
+                    string argument = input.Remove(startPos, endPos).Trim(' ');
+
+                    (commandList[i] as DebugCommand).Invoke(argument);
 
                 }
 
