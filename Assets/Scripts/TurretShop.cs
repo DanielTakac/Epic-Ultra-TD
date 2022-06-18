@@ -8,10 +8,12 @@ public class TurretShop : MonoBehaviour {
     [SerializeField] private GameObject[] turretInfosArray;
     [SerializeField] private GameObject[] turretButtonsArray;
     [SerializeField] private GameObject[] turretPrefabsArray;
+    [SerializeField] private GameObject[] turretHologramsArray;
 
     private Dictionary<string, GameObject> turretInfos = new Dictionary<string, GameObject>();
     private Dictionary<string, GameObject> turretButtons = new Dictionary<string, GameObject>();
     public Dictionary<string, GameObject> turretPrefabs = new Dictionary<string, GameObject>();
+    public Dictionary<string, GameObject> turretHolograms = new Dictionary<string, GameObject>();
 
     public Dictionary<string, bool> turretsClicked = new Dictionary<string, bool> {
         { "voyager", false },
@@ -21,10 +23,10 @@ public class TurretShop : MonoBehaviour {
         { "missile", false }
     };
 
-    private Dictionary<string, int> turretPrices = new Dictionary<string, int> {
-        { "voyager", 50 },
-        { "tesla", 100 },
-        { "money", 125 },
+    public Dictionary<string, int> turretPrices = new Dictionary<string, int> {
+        { "voyager", 100 },
+        { "tesla", 125 },
+        { "money", 50 },
         { "minigun", 175 },
         { "missile", 250 }
     };
@@ -34,30 +36,25 @@ public class TurretShop : MonoBehaviour {
 
     private void Start() {
 
-        if (turretInfosArray.Length != 5 || turretButtonsArray.Length != 5 || turretPrefabsArray.Length != 5) {
+        if (turretInfosArray.Length != 5 || turretButtonsArray.Length != 5 || turretPrefabsArray.Length != 5 || turretHologramsArray.Length != 5) {
             
             Debug.LogError("Not all items added to arrays in unity inspector!");
             return;
 
         }
 
-        turretInfos.Add("voyager", turretInfosArray[0]);
-        turretInfos.Add("tesla", turretInfosArray[1]);
-        turretInfos.Add("money", turretInfosArray[2]);
-        turretInfos.Add("minigun", turretInfosArray[3]);
-        turretInfos.Add("missile", turretInfosArray[4]);
+        int i = 0;
 
-        turretButtons.Add("voyager", turretButtonsArray[0]);
-        turretButtons.Add("tesla", turretButtonsArray[1]);
-        turretButtons.Add("money", turretButtonsArray[2]);
-        turretButtons.Add("minigun", turretButtonsArray[3]);
-        turretButtons.Add("missile", turretButtonsArray[4]);
+        foreach (string turretName in turretsClicked.Keys) {
 
-        turretPrefabs.Add("voyager", turretPrefabsArray[0]);
-        turretPrefabs.Add("tesla", turretPrefabsArray[1]);
-        turretPrefabs.Add("money", turretPrefabsArray[2]);
-        turretPrefabs.Add("minigun", turretPrefabsArray[3]);
-        turretPrefabs.Add("missile", turretPrefabsArray[4]);
+            turretInfos.Add(turretName, turretInfosArray[i]);
+            turretButtons.Add(turretName, turretButtonsArray[i]);
+            turretPrefabs.Add(turretName, turretPrefabsArray[i]);
+            turretHolograms.Add(turretName, turretHologramsArray[i]);
+
+            i++;
+
+        }
 
     }
 
@@ -133,7 +130,27 @@ public class TurretShop : MonoBehaviour {
 
     }
 
-    
+    public GameObject SpawnTurretHologram(Transform tile) {
+
+        // Returs if a turret is already placed on the tile
+        if (tile.gameObject.GetComponent<Tile>().hasTower) return null;
+
+        string turretName = GetSelectedTurret(out bool turretSelected);
+
+        if (!turretSelected) {
+
+            Debug.LogError("No turret selected!");
+            return null;
+
+        }
+
+        var turretHologram = Instantiate(turretHolograms[turretName], tile);
+
+        turretHologram.transform.position = new Vector3(tile.position.x, turretHologram.transform.position.y, tile.position.z);
+
+        return turretHologram;
+
+    }
 
     public void SpawnTurret(Transform tile) {
 

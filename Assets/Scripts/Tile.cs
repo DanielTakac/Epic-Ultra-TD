@@ -13,18 +13,27 @@ public class Tile : MonoBehaviour{
 
     public bool hasTower { get; set; }
 
-
     private void OnMouseEnter(){
 
         FindObjectOfType<TurretShop>().GetSelectedTurret(out bool turretSelected);
 
-        if (turretSelected && !hasTower) mesh.material = hoverMaterial;
+        if (turretSelected && !hasTower) {
+
+            mesh.material = hoverMaterial;
+
+            FindObjectOfType<TurretShop>().SpawnTurretHologram(transform);
+
+        }
         
     }
 
     private void OnMouseExit(){
 
         mesh.material = originalMaterial;
+
+        var holograms = FindObjectsOfType<TurretHologram>();
+
+        foreach (var hologram in holograms) Destroy(hologram.gameObject);
         
     }
 

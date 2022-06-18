@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a85712b22ad692b42b5b2abc52c2e7c0, type: 2}
+  - {fileID: 2100000, guid: 17fa45a046b1db24782f9ae5b6baada8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,7 +145,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a85712b22ad692b42b5b2abc52c2e7c0, type: 2}
+  - {fileID: 2100000, guid: 17fa45a046b1db24782f9ae5b6baada8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -177,12 +177,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6863294973839648792}
   - component: {fileID: 280894513137479852}
-  - component: {fileID: 8170973185115167071}
-  - component: {fileID: 8505938222594593291}
-  - component: {fileID: 8574372068245074296}
+  - component: {fileID: -4933900745762655267}
   m_Layer: 0
-  m_Name: MoneyTurret
-  m_TagString: Tower
+  m_Name: MoneyTurretHologram
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +214,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &8170973185115167071
+--- !u!114 &-4933900745762655267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,48 +223,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6863294973839648793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6711944d3d4f7db40905b067c1fea616, type: 3}
+  m_Script: {fileID: 11500000, guid: 6cb9fd2cef114c546b20c417421ff640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderers:
   - {fileID: 6863294972428923063}
   - {fileID: 6863294973821380585}
-  hoverMat: {fileID: 2100000, guid: a23b608b15836fd40954e8cb6bf15fe5, type: 2}
-  coinPrefab: {fileID: 7008684325120281442, guid: ee87a13980d3bd34b94ffa72fa92dce2, type: 3}
-  coinSpawnOffset: {x: 0, y: 1.5, z: 0}
-  rotateSpeed: 50
-  orbitSpeed: 80
-  speed: 0.5
-  moneyToGenerate: 100
---- !u!114 &8505938222594593291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6863294973839648793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be0d65c44739882499ce5c7640d21e0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 1498403948531744, guid: fa2c57d3f28a5e6419393e8bc3eeb32a, type: 3}
-  coinSpawnOffset: {x: 0.3, y: 1.5, z: 0.3}
-  moneyToGenerate: 10
-  shootDelay: 6
-  canShoot: 1
---- !u!114 &8574372068245074296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6863294973839648793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79854e7fafa35274989e9eff2fcc64f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathEffectPrefab: {fileID: 2113210695220427801, guid: ef0567b50cc036d48ac985b94988b891, type: 3}
-  tile: {fileID: 0}
-  destroyedBy: {fileID: 0}
+  buildableMaterial: {fileID: 2100000, guid: 17fa45a046b1db24782f9ae5b6baada8, type: 2}
+  unbuildableMaterial: {fileID: 2100000, guid: 1f9247f2af24a3f4eb905b45f3148d84, type: 2}
+  turretName: money
