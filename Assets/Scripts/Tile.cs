@@ -16,7 +16,9 @@ public class Tile : MonoBehaviour{
 
     private void OnMouseEnter(){
 
-        mesh.material = hoverMaterial;
+        FindObjectOfType<TurretShop>().GetSelectedTurret(out bool turretSelected);
+
+        if (turretSelected && !hasTower) mesh.material = hoverMaterial;
         
     }
 

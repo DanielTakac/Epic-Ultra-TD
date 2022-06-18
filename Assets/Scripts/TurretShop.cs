@@ -116,26 +116,33 @@ public class TurretShop : MonoBehaviour {
 
     }
 
-    private string GetSelectedTurret() {
+    public string GetSelectedTurret(out bool anyTurretSelected) {
 
         foreach (KeyValuePair<string, bool> item in turretsClicked) {
 
-            if (item.Value) return item.Key;
-
+            if (item.Value) {
+             
+                anyTurretSelected = true;
+                return item.Key;
+            
+            }
         }
 
+        anyTurretSelected = false;
         return string.Empty;
 
     }
+
+    
 
     public void SpawnTurret(Transform tile) {
 
         // Returs if a turret is already placed on the tile
         if (tile.gameObject.GetComponent<Tile>().hasTower) return;
 
-        string turretName = GetSelectedTurret();
+        string turretName = GetSelectedTurret(out bool turretSelected);
 
-        if (turretName == string.Empty) {
+        if (!turretSelected) {
 
             Debug.LogError("No turret selected!");
             return;
