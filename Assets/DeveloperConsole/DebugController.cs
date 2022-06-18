@@ -154,9 +154,9 @@ public class DebugController : MonoBehaviour {
 
         });
 
-        SHIELD = new DebugCommand("shield", "Makes objects invincible - 2 parameters: string object name(turrets, enemies), bool enable or diable", "shield", (string[] parameters) => {
+        SHIELD = new DebugCommand("shield", "Makes objects invincible - 2 parameters: string object name(turrets, enemies), bool enable or disable", "shield", (string[] parameters) => {
 
-            if (parameters.Length < 2 && parameters[0] == string.Empty) return;
+            if (parameters.Length < 2 || parameters[0] == string.Empty) return;
             if (!(parameters[0] is "turrets" or "enemies" or "all")) return;
             if (!(parameters[1] is "enable" or "disable" or "true" or "false")) return;
 
@@ -165,7 +165,7 @@ public class DebugController : MonoBehaviour {
                 GameObject[] turrets = GameObject.FindGameObjectsWithTag("Tower");
 
                 if (parameters[1] is "enable" or "true") {
-                    
+
                     for (int i = 0; i < turrets.Length; i++)
                         turrets[i].GetComponent<TowerHealth>().GetShield();
 
@@ -178,7 +178,7 @@ public class DebugController : MonoBehaviour {
 
             }
             
-            if (parameters[1] is "enemies" or "all") {
+            if (parameters[0] is "enemies" or "all") {
 
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("Ghoul");
 
@@ -190,7 +190,7 @@ public class DebugController : MonoBehaviour {
                 } else if (parameters[1] is "disable" or "false") {
 
                     for (int i = 0; i < enemies.Length; i++)
-                        enemies[i].GetComponent<Ghoul>().GetShield();
+                        enemies[i].GetComponent<Ghoul>().BreakShield();
 
                 }
 
