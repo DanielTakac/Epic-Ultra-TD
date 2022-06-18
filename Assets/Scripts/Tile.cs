@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour{
 
-    [Header("Setup")]
-
     private Material originalMaterial;
     public Material hoverMaterial;
 
     public MeshRenderer mesh;
 
+    [SerializeField] private LayerMask layerMask;
+
     public bool hasTower { get; set; }
 
-    private void OnMouseEnter(){
+    /*private void OnMouseEnter(){
 
         FindObjectOfType<TurretShop>().GetSelectedTurret(out bool turretSelected);
 
@@ -41,12 +41,33 @@ public class Tile : MonoBehaviour{
 
         FindObjectOfType<TurretShop>().SpawnTurret(transform);
 
-    }
+    }*/
 
-    void Start(){
+    void Start() {
 
         originalMaterial = mesh.material;
 
+    }
+
+    void Update() {
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 1000f, layerMask)) {
+
+            Debug.LogError(hit.transform.gameObject.name);
+            
+            if (hit.transform.gameObject.GetInstanceID() == gameObject.GetInstanceID()) mesh.material = hoverMaterial;
+
+            //hit.transform.gameObject.GetComponent<Tile>().mesh.material = hoverMaterial;
+
+        } else {
+
+            mesh.material = originalMaterial;
+
+        }
+        
     }
 
 }
