@@ -15,6 +15,12 @@ public class TurretShop : MonoBehaviour {
     public Dictionary<string, GameObject> turretPrefabs = new Dictionary<string, GameObject>();
     public Dictionary<string, GameObject> turretHolograms = new Dictionary<string, GameObject>();
 
+    [SerializeField] private LayerMask tileLayerMask;
+
+    [SerializeField] private Material tileHoverMaterial;
+
+    private Material tileOriginalMaterial;
+
     public Dictionary<string, bool> turretsClicked = new Dictionary<string, bool> {
         { "voyager", false },
         { "tesla", false },
@@ -33,30 +39,6 @@ public class TurretShop : MonoBehaviour {
 
     [SerializeField] private Color turretPressedColor;
     [SerializeField] private Color turretNotPressedColor;
-
-    private void Start() {
-
-        if (turretInfosArray.Length != 5 || turretButtonsArray.Length != 5 || turretPrefabsArray.Length != 5 || turretHologramsArray.Length != 5) {
-            
-            Debug.LogError("Not all items added to arrays in unity inspector!");
-            return;
-
-        }
-
-        int i = 0;
-
-        foreach (string turretName in turretsClicked.Keys) {
-
-            turretInfos.Add(turretName, turretInfosArray[i]);
-            turretButtons.Add(turretName, turretButtonsArray[i]);
-            turretPrefabs.Add(turretName, turretPrefabsArray[i]);
-            turretHolograms.Add(turretName, turretHologramsArray[i]);
-
-            i++;
-
-        }
-
-    }
 
     public void ShowTurretInfo(string turretName) => turretInfos[turretName].SetActive(true);
 
@@ -134,6 +116,7 @@ public class TurretShop : MonoBehaviour {
 
         // Returs if a turret is already placed on the tile
         if (tile.gameObject.GetComponent<Tile>().hasTower) return null;
+        if (tile.gameObject.GetComponent<Tile>().hasHologram) return null;
 
         string turretName = GetSelectedTurret(out bool turretSelected);
 
@@ -177,6 +160,67 @@ public class TurretShop : MonoBehaviour {
         FindObjectOfType<SoundManager>().TurretSpawn();
 
         tile.gameObject.GetComponent<Tile>().hasTower = true;
+
+    }
+
+    private void Start() {
+
+        if (turretInfosArray.Length != 5 || turretButtonsArray.Length != 5 || turretPrefabsArray.Length != 5 || turretHologramsArray.Length != 5) {
+
+            Debug.LogError("Not all items added to arrays in unity inspector!");
+            return;
+
+        }
+
+        int i = 0;
+
+        foreach (string turretName in turretsClicked.Keys) {
+
+            turretInfos.Add(turretName, turretInfosArray[i]);
+            turretButtons.Add(turretName, turretButtonsArray[i]);
+            turretPrefabs.Add(turretName, turretPrefabsArray[i]);
+            turretHolograms.Add(turretName, turretHologramsArray[i]);
+
+            i++;
+
+        }
+
+        tileOriginalMaterial = FindObjectOfType<Tile>().mesh.material;
+
+    }
+
+    void Update() {
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 1000f, tileLayerMask)) {
+
+            var tile = hit.transform.parent.gameObject.GetComponent<Tile>();
+
+            tile.mesh.material = tileHoverMaterial;
+
+            GetSelectedTurret(out bool turretSelected);
+
+            if (turretSelected && !tile.hasTower && !tile.hasHologram) {
+
+                tile.mesh.material = tileHoverMaterial;
+
+                SpawnTurretHologram(tile.transform);
+
+            }
+
+            if (Input.GetMouseButtonDown(0)) SpawnTurret(tile.transform);
+
+        } else {
+
+            foreach (Tile tile in FindObjectsOfType<Tile>()) {
+
+                tile.mesh.material = tileOriginalMaterial;
+
+            }
+
+        }
 
     }
 

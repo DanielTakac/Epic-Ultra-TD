@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour{
 
-    private Material originalMaterial;
-    public Material hoverMaterial;
-
     public MeshRenderer mesh;
 
-    [SerializeField] private LayerMask layerMask;
-
     public bool hasTower { get; set; }
+    public bool hasHologram { get; set; }
 
     /*private void OnMouseEnter(){
 
@@ -42,30 +38,5 @@ public class Tile : MonoBehaviour{
         FindObjectOfType<TurretShop>().SpawnTurret(transform);
 
     }*/
-
-    void Start() {
-
-        originalMaterial = mesh.material;
-
-    }
-
-    void Update() {
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 1000f, layerMask)) {
-
-            if (hit.transform.gameObject.GetInstanceID() == transform.Find("MouseDetector").gameObject.GetInstanceID()) mesh.material = hoverMaterial;
-
-            //hit.transform.gameObject.GetComponent<Tile>().mesh.material = hoverMaterial;
-
-        } else {
-
-            mesh.material = originalMaterial;
-
-        }
-        
-    }
 
 }
