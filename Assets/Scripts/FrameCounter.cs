@@ -1,63 +1,86 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class FrameCounter : MonoBehaviour{
+public class FrameCounter : MonoBehaviour {
 
     [Header("Setup")]
 
-    public GameObject object1;
-    public GameObject object2;
-    public GameObject object3;
-    public GameObject object4;
-
-    public Text fpsText;
-
-    public Text frameTimeText;
+    [SerializeField] private Text fpsText;
+    [SerializeField] private Text frameTimeText;
+    [SerializeField] private Text minFpsText;
+    [SerializeField] private Text maxFpsText;
+    [SerializeField] private Text averageFpsText;
 
     [Header ("Game Values")]
 
     public float refreshDelay = 0.1f;
 
-    private float frameTime;
-
     private float fps;
+    private float frameTime;
+    private float minFps = float.MaxValue;
+    private float maxFps = 0;
+    private float averageFPS;
 
-    public bool showFps = false;
+    private List<float> fpsList = new List<float>();
 
-    private void Start(){
+    private bool showFps = true;
+
+    private bool bufferTime = true;
+
+    private void Start() {
 
         InvokeRepeating("RefreshText", 0.1f, refreshDelay);
+
+        InvokeRepeating("AddFPSToList", 0.1f, 0.2f);
         
+        InvokeRepeating("ResetFPSValues", 0.1f, 5f);
+
+        Invoke("DisableBufferTime", 1.5f);
+
     }
 
-    void Update(){
+    void Update() {
 
         frameTime = Time.deltaTime;
 
         fps = 1 / Time.deltaTime;
 
+        averageFPS = fpsList.Sum() / fpsList.Count;
+
+        // So first few seconds don't count because of lag
+        if (bufferTime) return;
+
+        if (fps < minFps) minFps = fps;
+        if (fps > maxFps) maxFps = fps;
+
     }
 
-    private void RefreshText(){
+    private void DisableBufferTime() => bufferTime = false;
 
-        if (showFps){
+    private void AddFPSToList() => fpsList.Add(fps);
 
-            frameTimeText.text = frameTime.ToString("F3");
+    private void ResetFPSValues() => fpsList.Clear();
+
+    private void RefreshText() {
+
+        if (showFps) {
 
             fpsText.text = fps.ToString("F0");
+            frameTimeText.text = frameTime.ToString("F3");
+            minFpsText.text = minFps.ToString("F0");
+            maxFpsText.text = maxFps.ToString("F0");
+            averageFpsText.text = averageFPS.ToString("F0");
 
         }
 
     }
 
-    public void EnableFPS(){
+    public void EnableFPS() {
 
-        object1.SetActive(true);
-        object2.SetActive(true);
-        object3.SetActive(true);
-        object4.SetActive(true);
+        foreach (Transform child in transform) child.gameObject.SetActive(true);
 
         showFps = true;
 
@@ -65,10 +88,7 @@ public class FrameCounter : MonoBehaviour{
 
     public void DisableFPS(){
 
-        object1.SetActive(false);
-        object2.SetActive(false);
-        object3.SetActive(false);
-        object4.SetActive(false);
+        foreach (Transform child in transform) child.gameObject.SetActive(true);
 
         showFps = false;
 

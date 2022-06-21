@@ -56,9 +56,7 @@ public class Tile : MonoBehaviour{
 
         if (Physics.Raycast(ray, out hit, 1000f, layerMask)) {
 
-            Debug.LogError(hit.transform.gameObject.name);
-            
-            if (hit.transform.gameObject.GetInstanceID() == gameObject.GetInstanceID()) mesh.material = hoverMaterial;
+            if (hit.transform.gameObject.GetInstanceID() == transform.Find("MouseDetector").gameObject.GetInstanceID()) mesh.material = hoverMaterial;
 
             //hit.transform.gameObject.GetComponent<Tile>().mesh.material = hoverMaterial;
 
