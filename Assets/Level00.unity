@@ -850,6 +850,10 @@ MonoBehaviour:
   - {fileID: 6863294973839648793, guid: 0ffd1190c1411eb4daa6eae6a502e596, type: 3}
   - {fileID: 509203018124020660, guid: cfe3e82f6f8ac0141b48ce836f17da14, type: 3}
   - {fileID: 2667191717518548745, guid: 75708fac9886680458dc3586c7cdcd71, type: 3}
+  tileLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  tileHoverMaterial: {fileID: 2100000, guid: 8e159b5ce8cb50144b2028e36b0c91f9, type: 2}
   turretPressedColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   turretNotPressedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &69692033 stripped
